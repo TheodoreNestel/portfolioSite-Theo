@@ -1,0 +1,43 @@
+
+
+
+Works page
+    -dot links orbiting around when clicked open a frosted type pane with projects details / preview / links 
+
+    potential works json object {
+        url:"String",
+        preview:"ImgString",
+        des:"string",
+        github:"string",
+        role:"string",
+        showcase:"bool"
+        tags:["strings"]
+    }
+
+
+
+ 
+
+easter egg page idea
+    - when scroll down the black hole void's out the whole site >:D
+
+
+contact 
+    -linkedIn
+    -Email 
+    -Twitter 
+    (all sexy icons ripped from somewhere)
+
+about page
+    -humble brags about me
+    -resume (dumps pdf in the person's browser :p)
+
+
+
+
+
+assets we're gonna need 
+    -Rings png 
+    -planets at least 3  3d models 
+    -black hole sphere with elipsis 3d - https://github.com/vlwkaos/threejs-blackhole
+    -background code to make look like stars 

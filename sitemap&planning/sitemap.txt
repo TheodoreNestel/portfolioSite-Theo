@@ -1,0 +1,32 @@
+
+
+
+
+
+
+- main page
+        -nav 
+            -resume / info 
+            -contact page 
+            -List of works **takes you to a landiang page with all the works
+
+
+
+
+design:
+     -Figma balls?
+
+tech:
+    -React 
+    -NextJs
+
+deployment 
+    -heroku?
+
+crying:
+    - a lot
+
+
+
+     
+    
