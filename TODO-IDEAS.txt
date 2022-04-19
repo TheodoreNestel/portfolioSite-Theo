@@ -41,3 +41,11 @@ assets we're gonna need
     -planets at least 3  3d models 
     -black hole sphere with elipsis 3d - https://github.com/vlwkaos/threejs-blackhole
     -background code to make look like stars 
+
+
+
+
+//////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+TODOs / stuff we need to figure out 
+    -Gatsby Browser api and its affect on scss on the index page 
