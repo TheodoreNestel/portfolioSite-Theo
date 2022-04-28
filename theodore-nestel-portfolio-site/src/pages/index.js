@@ -12,6 +12,7 @@ const IndexPage = () => {
     <main>
       <div>
         <h1>Hello world Gatsby style!</h1>
+        <img src="https://c.tenor.com/L9Geb6hCmCEAAAAM/dance-move.gif"/>
       </div>
     </main>
   )

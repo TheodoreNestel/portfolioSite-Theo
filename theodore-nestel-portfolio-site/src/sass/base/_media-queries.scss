@@ -1,0 +1,47 @@
+
+
+
+@mixin respond($breakpoint) {
+    @media screen and (max-width: $breakpoint) {
+
+       @content 
+        
+    }   
+};
+
+@mixin mini-phone{
+    @media screen and (max-width: 25em){ //400px
+        @content
+    }
+};
+
+@mixin phone {
+    @media screen and (max-width: 37.5em){ //600px
+        @content
+    }
+};
+
+
+@mixin tablet{
+    @media  screen and (max-width: 56.25em) { //900px
+        @content
+    }
+};
+
+@mixin sideways-blet{
+    @media screen and(max-width: 75em){ //1200px
+        @content
+    }
+};
+
+@mixin laptop{
+    @media screen and (max-width: 85em) { //1400px
+        @content
+    }
+};
+
+
+
+
+//Mixin function allow us to write repeatable code similar to js function in this case they let you apply some css rules based on /////preset values such as screen sizes 
+//so when we write css in our main file we can specify that those css rules should only apply when the mixin condition is met

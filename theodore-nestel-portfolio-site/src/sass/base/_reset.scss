@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    
+    
+  }
+
+  body{
+      box-sizing: border-box;
+      //here we reset the overall font back to the original 16px but our rems will still have the 10 px value
+      font-size: 1.6rem;
+      overflow-x: hidden; //this prevents jankiness from overflow 
+
+  }
+
+  
+
+  html{
+    //we do this to change the default font size of 16px to 10px so that 1 rem = 10px 
+      font-size: 62.5%;
+
+
+  }

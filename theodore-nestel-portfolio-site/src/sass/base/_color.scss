@@ -1,0 +1,31 @@
+
+$black: #000;
+$pink: pink;
+$bright-yellow: #FAA916;
+$ghost-white: #FFFAFF;
+$beau-blue: #AAC7DA;
+$rich-black: #000411;
+$dim-grey: #6D676E;
+
+
+:root{
+    --black: #{$black};
+    --pink:#{$pink};
+    --bright-yellow:#{$bright-yellow};
+    --ghost-white:#{$ghost-white};
+    --beau-blue:#{$beau-blue};
+    --rich-black:#{$rich-black};
+    --dim-grey:#{$dim-grey};
+}
+
+
+button{
+    background-color: $pink;
+
+    &:hover{
+        background-color: darken($pink , 10%);
+    }
+}
+
+
+
