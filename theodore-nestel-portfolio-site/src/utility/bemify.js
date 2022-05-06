@@ -35,4 +35,71 @@ function bemify(block){ //this needs to return a function with block as the base
     }
 }
 
+
+//better bem
+
+// For logging to codepen dom
+const p = document.querySelector("#test") //this wont work as we dont actually have this variable in our code
+//this was used as part of the demo in the code pen 
+const log = (value) => p.innerHTML = value
+
+// SOME EXAMPLE CASES
+// const bem = bemify("card")
+// bem("image") => "card__image"
+// bem() => "card"
+// bem("image", [true, "active"]) => "card__image active"
+// bem("image", [false, "active"]) => "card__image"
+// bem("image", [false, "active", "inactive"]) => "card__image inactive"
+// bem("image", false ? "active" : "inactive") => "card__image inactive"
+// bem("image", false ? "active" : "") => "card__image"
+// bem(null, [true, "active"]) => "card active"
+// bem(null, [true, "--active"]) => "card card--active" ?? "card card__--active" ?? "card active" ?? throw error
+
+const bemify2 = (block) => (element, ...classes) => {
+  
+  const formedClasses = classes.map(c => {
+    
+    // Some extra protec
+    if (!c) return
+    
+    // Assume its a string and assign the initial value
+    let className = c
+    
+    // Its an array (conditional)
+    if (Array.isArray(c)) {
+      
+      // Destructure our array for condition and classnames
+      const [condition, classIfTrue, classIfFalse] = c
+      
+      // Return the approrpiate classname
+      className = condition ? classIfTrue : classIfFalse //this line checks the conditional we passed into the potential array
+
+    }
+    
+    // Moar protec
+    if (!className || typeof className !== "string") return
+    
+    // Apply Bem Stuff
+    if (className.startsWith("--")) className = element ? `${block}__${element}${className}` : block + className
+    
+    // Don't be stupid and forget to return like Arjun
+    return className
+    
+  })
+  
+  return [element ? `${block}__${element}` : block, ...formedClasses].filter(c => !!c).join(" ")
+  
+}
+
+// Test this thing out
+const bem = bemify("card")
+
+// A fake state variable
+const isValid = false
+
+// Log it to the dom
+log(bem("image", "active", "hello", [isValid, "--valid", "--invalid"]))
+
+
+
 export default bemify;
