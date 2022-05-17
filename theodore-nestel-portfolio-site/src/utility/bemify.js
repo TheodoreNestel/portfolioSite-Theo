@@ -8,32 +8,32 @@
 
 
 
-function bemify(block){ //this needs to return a function with block as the base
-    //then the function needs to attach all classes passed in after 
-    return function(...classes){
+// function bemify(block){ //this needs to return a function with block as the base
+//     //then the function needs to attach all classes passed in after 
+//     return function(...classes){
 
-        if (!classes.length) return block; //if nothing return jsut the block
+//         if (!classes.length) return block; //if nothing return jsut the block
 
-         let items = classes; //the whole array of classes is not inside one variable 
+//          let items = classes; //the whole array of classes is not inside one variable 
 
-            let element = `${block}__${items.shift()}` //this grabs the element which will always be the first item passed into the func this also removes the first item from our array  ie: "Block__item[0]"
+//             let element = `${block}__${items.shift()}` //this grabs the element which will always be the first item passed into the func this also removes the first item from our array  ie: "Block__item[0]"
 
-            let otherClasses = items.map((item)=>{ //we run a map to grab the css modifiers  
-                if(item.startsWith("--")){
-                    return `${element}${item}` //this in theory would return something like : Block__Element--modifier
-                }
+//             let otherClasses = items.map((item)=>{ //we run a map to grab the css modifiers  
+//                 if(item.startsWith("--")){
+//                     return `${element}${item}` //this in theory would return something like : Block__Element--modifier
+//                 }
 
-                else {
-                    return item //and this would add your regular classes that are neither the main element or a modifier 
-                }
-            })
+//                 else {
+//                     return item //and this would add your regular classes that are neither the main element or a modifier 
+//                 }
+//             })
 
-            //only potential issue is that otherClasses is an array and I would need to join that with element ****
-        return [element , ...otherClasses].join(" ")
+//             //only potential issue is that otherClasses is an array and I would need to join that with element ****
+//         return [element , ...otherClasses].join(" ")
 
 
-    }
-}
+//     }
+// }
 
 
 //better bem
@@ -80,7 +80,8 @@ const bemify2 = (block) => (element, ...classes) => {
     if (!className || typeof className !== "string") return
     
     // Apply Bem Stuff
-    if (className.startsWith("--")) className = element ? `${block}__${element}${className}` : block + className
+    // if (className.startsWith("--")) className = element ? `${block}__${element}${className}` : block + className
+    //^^^^^ this doesnt work will need to fix
     
     // Don't be stupid and forget to return like Arjun
     return className
@@ -92,14 +93,14 @@ const bemify2 = (block) => (element, ...classes) => {
 }
 
 // Test this thing out
-const bem = bemify("card")
+//const bem = bemify("card")
 
 // A fake state variable
 const isValid = false
 
 // Log it to the dom
-log(bem("image", "active", "hello", [isValid, "--valid", "--invalid"]))
+//log(bem("image", "active", "hello", [isValid, "--valid", "--invalid"]))
 
 
 
-export default bemify;
+export default bemify2;

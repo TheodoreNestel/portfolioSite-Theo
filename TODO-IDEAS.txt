@@ -1,51 +1,13 @@
 
 
 
-Works page
-    -dot links orbiting around when clicked open a frosted type pane with projects details / preview / links 
-
-    potential works json object {
-        url:"String",
-        preview:"ImgString",
-        des:"string",
-        github:"string",
-        role:"string",
-        showcase:"bool"
-        tags:["strings"]
-    }
 
 
-
- 
-
-easter egg page idea
-    - when scroll down the black hole void's out the whole site >:D
+I will use this page to keep track of what I've added and where I got stuck 
 
 
-contact 
-    -linkedIn
-    -Email 
-    -Twitter 
-    (all sexy icons ripped from somewhere)
-
-about page
-    -humble brags about me
-    -resume (dumps pdf in the person's browser :p)
-
-
-
-
-
-assets we're gonna need 
-    -Rings png 
-    -planets at least 3  3d models 
-    -black hole sphere with elipsis 3d - https://github.com/vlwkaos/threejs-blackhole
-    -background code to make look like stars 
-
-
-
-
-//////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-TODOs / stuff we need to figure out 
-    -Gatsby Browser api and its affect on scss on the index page 
+5/17/22
+    - Created a Card component that adapts itself to the data passed into it 
+    -Several bad optimization require a more trained eye to iron out 
+        -Links are causing an issue as where no links are passed thing are undefined. (need some for of conditional)
+    -Another set back the fucking StartsWith doesnt seem to exist on this version of Gatsby a workaround is needed 
