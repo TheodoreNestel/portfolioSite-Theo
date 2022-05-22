@@ -11,6 +11,13 @@ import "../sass/main.scss"
 // Import Page Components
 import Space from "../components/Space"
 import Card from "../components/Card"
+import Image from "../components/Image"
+import Cta from "../components/Cta"
+import LinkOrb from "../components/LinkOrb"
+
+import data from "../data/home.json"
+
+console.log(data)
 
 
 
@@ -29,8 +36,8 @@ let aboutPageData = {
 let portFolioData = {
   title : "Name of that particula site",
   data : "blah blah this is the site I used so and so to to create it and it serves THIS purpose...",
-  img : "https://www.nicepng.com/png/detail/851-8517636_skin-element-http-i-imgur-com-t8thkso-girl.png",
-  links: ["link1" , "link2" ,"Link3"]
+  img : "https://i.pinimg.com/474x/31/38/fd/3138fd7f3c64f0b603b7cbb366901081.jpg",
+  links: [{link:"link1" , img:"imgAsset.png" , title: "sampleTitle1"} , {link:"link2" , title: "sampleTitle2"},{email:"coolEmail@email"}]
 
 }
 
@@ -40,11 +47,18 @@ let portFolioData = {
 
 // markup this is where the "react app" is edited like we know how it works
 
+//im dumping all current base level component to make sure they work 
+
 const IndexPage = () => {
   return (
     <main>
       <Space/>
-      <Card props={portFolioData} />
+      <Card title={portFolioData.title} data={portFolioData.data} />
+      <Image image={portFolioData.img}/>
+      <Cta cta="Scroll in any direction to explore" />
+      <LinkOrb />
+
+      
     </main>
   )
 }

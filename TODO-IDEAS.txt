@@ -10,4 +10,17 @@ I will use this page to keep track of what I've added and where I got stuck
     - Created a Card component that adapts itself to the data passed into it 
     -Several bad optimization require a more trained eye to iron out 
         -Links are causing an issue as where no links are passed thing are undefined. (need some for of conditional)
-    -Another set back the fucking StartsWith doesnt seem to exist on this version of Gatsby a workaround is needed 
+    -Another set back the fucking StartsWith doesnt seem to exist on this version of Gatsby a workaround is needed --Fixed
+
+5/18/22 
+    -Spoke with Arjun and got a better understanding of what my components are supposed to do so I redid the Card component --Fixed
+
+
+
+5/19/22 
+    -Tutoring with Arjun refactored card and links into the same component and a bunch of useful tips where aquired (:
+
+
+
+TODO 
+    -Find icons I like and find out how to make them appear based on a string prop 

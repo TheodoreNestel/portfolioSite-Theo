@@ -1,0 +1,49 @@
+
+THIS IS A SMALL GUIDE FOR ME TO REMEMBER ALL COMPONENTS I NEED TO MAKE
+
+
+
+
+Card : Status : complete 
+
+    -Card will display potentially 2 things 
+        -A title 
+        -A body of text 
+
+        
+
+Image: Status : Implemented *
+
+    -To load up an image based on a source
+
+
+
+Email/link: Status : 90% TODO: clean up / email auto open into email client (React native maybe?)
+
+    -To create an email field in a hyperlink that opens your email with the clicked on email prefilled in the box (potentiall mac only)
+
+
+
+Space: Status : To be Implemented 
+
+    -To load up the cool space effect behind
+
+
+
+Planet: Status : To be Implemented 
+
+    -Creates and loads the cool planets / planetary ring that will be navigation indicators 
+
+
+
+CTA: Status : Implemented
+
+    -The cta on the main page that will have the text hinting at how to navigate the site 
+
+
+
+Portfolio clickable orb: Status : 50% complete More info needed before I proceed
+
+    :: this will be the clickable orbs that load up the portfolio information
+    -Orbiting links with an preview of a site that will load up a card when clicked / hovered 
+

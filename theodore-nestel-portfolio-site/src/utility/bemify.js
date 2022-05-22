@@ -80,7 +80,7 @@ const bemify2 = (block) => (element, ...classes) => {
     if (!className || typeof className !== "string") return
     
     // Apply Bem Stuff
-    // if (className.startsWith("--")) className = element ? `${block}__${element}${className}` : block + className
+     if (className?.startsWith("--")) className = element ? `${block}__${element}${className}` : block + className
     //^^^^^ this doesnt work will need to fix
     
     // Don't be stupid and forget to return like Arjun
