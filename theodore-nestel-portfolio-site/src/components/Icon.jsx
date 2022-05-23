@@ -7,7 +7,7 @@ const bem = bemify2("icon")
 function Icon({icon}){
 
     return(
-        <div className={bem()}></div>
+        <ion-icon className={bem()} name={icon}></ion-icon>
     )
 }
 

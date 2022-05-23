@@ -1,4 +1,5 @@
 import * as React from "react"
+import Helmet from "react-helmet" //arjun will hate this and tell me another way but this make my client cdn work 
 
 // styles
 //we removed the inline styles in favor of stylesheet for the sake of code clarity 
@@ -14,6 +15,7 @@ import Card from "../components/Card"
 import Image from "../components/Image"
 import Cta from "../components/Cta"
 import LinkOrb from "../components/LinkOrb"
+import Icon from "../components/Icon"
 
 import data from "../data/home.json"
 
@@ -58,6 +60,12 @@ const IndexPage = () => {
       <Cta cta="Scroll in any direction to explore" />
       <LinkOrb />
 
+      <Icon icon="battery-full-outline" />
+
+      <Helmet>
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      </Helmet>
       
     </main>
   )
