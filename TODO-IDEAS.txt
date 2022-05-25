@@ -24,3 +24,15 @@ I will use this page to keep track of what I've added and where I got stuck
 
 TODO 
     -Find icons I like and find out how to make them appear based on a string prop 
+
+
+
+
+
+
+
+Homework for monday ! 
+    -boilerplate all the new pages 
+    -add new projects to the json 3/4 projects
+    -create link orbs for each new project 
+        

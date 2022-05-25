@@ -20,8 +20,8 @@ const Card = (props) => {
           </div>
         )}
 
-       <div className={bem("main")}>
-            <h2>{props.title}</h2>
+       <div className={bem("main",[!!props.img,"--min"])}>
+            <h3>{props.title}</h3>
             <div className={bem("content")}>
               {Array.isArray(props.data) ? 
                 props.data.map((d , index)=><p key={index}>{d}</p>) : <p>{props.data}</p>

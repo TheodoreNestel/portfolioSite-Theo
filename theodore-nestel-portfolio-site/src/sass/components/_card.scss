@@ -1,0 +1,64 @@
+
+
+
+
+
+
+.card{
+    background-color: #717186E5;
+    
+    backdrop-filter: blur(40px);
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+
+
+
+    &__image{
+        height:38rem;
+        img{
+            height:100%;
+            width:100%;
+            object-fit: cover;
+        }
+    }
+
+    &__main{
+        padding: 7.2rem 5.6rem;
+        display:flex;
+        flex-direction: column;
+        gap: 3rem;
+        &--min{
+            padding-top: 3rem;
+        }
+    }
+
+    &__links{
+        list-style-type: none;
+        display: flex;
+        gap: 3.2rem;
+        
+        &__links:hover{
+            cursor: pointer;
+        }
+
+        & li{
+            height:4.8rem;
+            width:4.8rem;
+            border-radius: 50%;
+            @include flexCenter;
+            background-color: #C4C4C4;
+
+            span{
+                @include flexCenter;
+            }
+
+          
+        }
+    }
+
+}
+
+

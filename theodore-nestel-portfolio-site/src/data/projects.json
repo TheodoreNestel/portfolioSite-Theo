@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Name of that particula site",
+        "data": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur pretium non a ut aliquam. Eget nulla sem purus platea et tincidunt elit. Gravida justo amet, nibh tristique viverra. A suspendisse pulvinar purus nibh convallis. Lectus ridiculus lectus nulla nunc, purus molestie ullamcorper purus. Urna turpis arcu mi elit nibh cursus nisl tristique. Ut ac enim et sapien vel.",
+        "img": "https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.jpg",
+        "links": [
+            {
+                "link": "link1",
+                "icon": "github",
+                "title": "sampleTitle1"
+            },
+            {"link": "link2", "icon": "reddit", "title": "sampleTitle2"
+            },
+            {"link": "email:coolEmail@email", "title": "coolEmail@email", "icon": "mail"
+            }
+        ]
+    }
+]
