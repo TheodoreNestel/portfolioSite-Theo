@@ -32,7 +32,8 @@ TODO
 
 
 Homework for monday ! 
-    -boilerplate all the new pages 
-    -add new projects to the json 3/4 projects
-    -create link orbs for each new project 
-        
+    -boilerplate all the new pages done !
+
+    -add new projects to the json 3/4 projects done 
+
+    -create link orbs for each new project done 
