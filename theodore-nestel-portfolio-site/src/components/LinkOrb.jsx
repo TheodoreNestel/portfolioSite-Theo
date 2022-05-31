@@ -1,6 +1,6 @@
 import React from "react"
 import bemify2 from "../utility/bemify"
-import Card from "../components/Card"
+
 
 
 const bem = bemify2("linkorb")
@@ -17,11 +17,7 @@ const bem = bemify2("linkorb")
 
 function LinkOrb(props){
     return (
-        <button  className={bem()} onClick={(e)=>{
-
-            
-
-        }} >Summon a card</button>
+        <button className={bem()} onClick={props.onClick} >Summon a card</button>
     )
 }
 

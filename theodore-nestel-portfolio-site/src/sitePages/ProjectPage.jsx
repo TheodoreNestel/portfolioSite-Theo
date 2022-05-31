@@ -1,23 +1,35 @@
-import React from "react"
+import React, { useState } from "react"
 import bemify2 from "../utility/bemify"
 import LinkOrb from "../components/LinkOrb";
+import projectData from "../data/projects.json"
+import Card from "../components/Card"
+import useClickOut from "../utility/useClickOut";
+
 
 const bem = bemify2("ProjectPage");
 
 //I dont think this needs more than this I could be wrong **
 
 
-function ProjectPage(props){
+function ProjectPage({ changePage }) {
+
+    const [selectedProject, setSelectedProject] = useState()
+    useClickOut(".card , .linkorb" , () => setSelectedProject(null))
+
     return (
-        <>
-        
-        <LinkOrb props0={"add data here for project 1"}/>
+        <div>
+            {projectData.map((project, key) => {
+                return <LinkOrb key={key} onClick={(e) => {
+                    setSelectedProject(project)
+                }} />
+            })}
+            {selectedProject && (
+                <div>
+                   <Card {...selectedProject}/>
+                </div>
+            )}
 
-        <LinkOrb props1={"add data here for project 2"}/>
-
-        <LinkOrb props2={"add data here for project 3"}/>
-
-        </>
+        </div>
     )
 }
 

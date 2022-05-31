@@ -20,7 +20,7 @@
         "title" : "someTitle1",
         "data" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur pretium non a ut aliquam. Eget nulla sem purus platea et tincidunt elit. Gravida justo amet, nibh tristique viverra. A suspendisse pulvinar purus nibh convallis. Lectus ridiculus lectus nulla nunc, purus molestie ullamcorper purus. Urna turpis arcu mi elit nibh cursus nisl tristique. Ut ac enim et sapien vel.",
         "img" : "https://png.pngitem.com/pimgs/s/109-1092544_view-pogger-pogchamp-emote-png-transparent-png.png",
-        "link" : [
+        "links" : [
             {
                 "link": "link1",
                 "icon": "github",
@@ -43,7 +43,7 @@
         "title" : "someTitle2",
         "data" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur pretium non a ut aliquam. Eget nulla sem purus platea et tincidunt elit. Gravida justo amet, nibh tristique viverra. A suspendisse pulvinar purus nibh convallis. Lectus ridiculus lectus nulla nunc, purus molestie ullamcorper purus. Urna turpis arcu mi elit nibh cursus nisl tristique. Ut ac enim et sapien vel.",
         "img" : "https://i.imgflip.com/5jbdi4.jpg",
-        "link" : [
+        "links" : [
             {
                 "link": "link1",
                 "icon": "github",

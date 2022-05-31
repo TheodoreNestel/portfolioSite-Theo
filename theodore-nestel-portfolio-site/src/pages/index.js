@@ -31,7 +31,7 @@ const pages = {
 //im dumping all current base level component to make sure they work 
 
 const IndexPage = () => {
-  const [page , setPage] = useState("MainPage")
+  const [page , setPage] = useState("ProjectPage")
   const Page = pages[page]; //this takes whatever page the useSate is holding and grabs the page object accordingly 
 
   return (
