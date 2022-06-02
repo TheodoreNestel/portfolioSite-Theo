@@ -11,7 +11,7 @@ export default function useClickOut(selector , callback){
           
 
         }
-        document.body.addEventListener("click" , handleClick)
-        return ()=> document.body.removeEventListener("click", handleClick)
+        document.addEventListener("click" , handleClick)
+        return ()=> document.removeEventListener("click", handleClick)
     },[selector])
 }
