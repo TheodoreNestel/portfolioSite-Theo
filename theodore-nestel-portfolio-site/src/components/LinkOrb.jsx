@@ -15,9 +15,9 @@ const bem = bemify2("linkorb")
 //clicking the button opens it 
 
 
-function LinkOrb(props){
+function LinkOrb({ onClick, title }){
     return (
-        <button className={bem()} onClick={props.onClick} >Summon a card</button>
+        <button className={bem()} onClick={onClick}>Open {title}</button>
     )
 }
 
