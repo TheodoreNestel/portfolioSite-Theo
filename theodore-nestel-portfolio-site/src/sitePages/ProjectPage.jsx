@@ -7,11 +7,6 @@ import useClickOut from "../utility/useClickOut";
 import anime from "animejs";
 
 
-const bem = bemify2("ProjectPage");
-
-//I dont think this needs more than this I could be wrong **
-
-
 function ProjectPage({ changePage }) {
 
     // A flag vaiable to determine the state of animations
