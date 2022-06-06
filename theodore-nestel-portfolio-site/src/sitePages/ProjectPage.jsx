@@ -31,18 +31,28 @@ function ProjectPage({ changePage }) {
         isAnimating.current = true
 
         const card = cardContainerRef.current.querySelector(".card")
+        const content = card.querySelectorAll(".card__title, .card__content > p, .card__links > li")
 
         if (direction === "in" || !timeline.current) {
 
             // Create Timeline
             timeline.current = anime.timeline({
-                easing: "easeInSine",
-                duration: 1000,
+                easing: "easeOutCubic",
+                duration: 500,
                 autoplay: false
             })
             .add({
                 targets: card,
-                opacity: [0, 1]
+                opacity: [0, 1],
+                scale: [0.7, 1],
+                duration: 400
+            })
+            .add({
+                targets: content,
+                opacity: [0, 1],
+                translateY: [anime.stagger(50, {direction: 'reverse'}), 0],
+                delay: anime.stagger(150),
+                duration: 200
             })
             
         } 
@@ -87,14 +97,20 @@ function ProjectPage({ changePage }) {
     }, [selectedProject]) 
 
     return (
-        <div>
-            {projectData.map((project, key) => (
-                <LinkOrb
-                    key={key}
-                    onClick={() => !isAnimating.current && setSelectedProject(project)}
-                    title={project.title}
-                />
-            ))}
+        <div className="projects">
+            <div style={{
+                marginBottom: "2.4rem",
+                display: "flex",
+                gap: "1.6rem",
+            }}>
+                {projectData.map((project, key) => (
+                    <LinkOrb
+                        key={key}
+                        onClick={() => !isAnimating.current && setSelectedProject(project)}
+                        title={project.title}
+                    />
+                ))}
+            </div>
             {selectedProject && (
                 <div ref={cardContainerRef}>
                     <Card {...selectedProject} />

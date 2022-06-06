@@ -4,6 +4,7 @@
 @import "./base/typography";
 @import"./base/reset";
 @import"components/card";
+@import "./pages/projects";
 
 
 
@@ -11,10 +12,15 @@
 
 body{
     background-color: $beau-blue;
+    min-height: 100vh;
 
     @include phone{
         background-color: aquamarine;
     }
+
+    background-image: url("/space.jpeg");
+    background-size: cover;
+    background-position: center;
     
 }
 
