@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import bemify2 from "../utility/bemify"
 import LinkOrb from "../components/LinkOrb";
 import projectData from "../data/projects.json"
@@ -11,6 +11,17 @@ const bem = bemify2("ProjectPage");
 
 //I dont think this needs more than this I could be wrong **
 
+const animateCard = (card, direction) => {
+    // Create Timeline
+    const timeline = anime.timeline({});
+
+    // Add things to timeline
+    timeline.add()
+
+    // Return Promise
+    return timeline.finished;
+}
+
 
 function ProjectPage({ changePage }) {
 
@@ -18,90 +29,49 @@ function ProjectPage({ changePage }) {
     const isAnimating = useRef(false)
 
     // Keep track of current card HTML element, without re-rendering
-    const cardContainerRef = useRef()
-
-    // Keep track of current animation timeline
-    const timeline = useRef()
+    const cardRef = useRef()
 
     // Handle State to control the card
     const [selectedProject, setSelectedProject] = useState()
-
-    // Handle Animation
-    const animateCard = async (direction) => {
-
-        // If animation is already running, do nothing
-        if (isAnimating.current) return
-
-        // Set animation flag
-        isAnimating.current = true
-
-        const card = cardContainerRef.current.querySelector(".card")
-
-        if (direction === "in" || !timeline.current) {
-
-            // Create Timeline
-            timeline.current = anime.timeline({
-                easing: "easeInSine",
-                duration: 1000,
-                autoplay: false
-            })
-            .add({
-                targets: card,
-                opacity: [0, 1]
-            })
-            
-        } 
-    
-        else {
-            timeline.current.reverse()
-        }
-
-        // Play animation
-        timeline.current.play();
-    
-        // Return Promise
-        await timeline.current.finished;
-
-        // Reset animation flag
-        isAnimating.current = false
-    }
 
     // Handle Card Exit
     useClickOut(".card , .linkorb", async () => {
 
         // If an animation is running then dont do anything
-        if (isAnimating.current || !selectedProject) return;
+        if (isAnimating.current) return;
 
-        // Wait for animation to complete
-        await animateCard("out")
+        // Set animation to running
+        await animateCard(cardRef.current, "out")
 
         // Finally after the animation is complete, update state to remove the card
         setSelectedProject(null)
 
-    }, [selectedProject])
+    })
 
-    // Handle Card Enter with useLayoutEffect
-    useLayoutEffect(() => {
+    // Handle Card Enter with useEffect
+    useEffect(() => {
 
         // If nothing is selected, return
-        if (!selectedProject || isAnimating.current) return;
+        if (!selectedProject) return;
 
         // Trigger animation in
-        animateCard("in")
+        animateCard(cardRef.current, "in")
+
+        // Set isAnimating to true
+        isAnimating.current = true;
 
     }, [selectedProject]) 
 
     return (
         <div>
-            {projectData.map((project, key) => (
-                <LinkOrb
-                    key={key}
-                    onClick={() => !isAnimating.current && setSelectedProject(project)}
-                    title={project.title}
-                />
-            ))}
+            {projectData.map((project, key) => {
+                return <LinkOrb key={key} onClick={(e) => {
+                    if (isAnimating.current) return;
+                    setSelectedProject(project)
+                }} />
+            })}
             {selectedProject && (
-                <div ref={cardContainerRef}>
+                <div ref={cardRef}>
                     <Card {...selectedProject} />
                 </div>
             )}
