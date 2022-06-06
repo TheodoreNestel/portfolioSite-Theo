@@ -1,6 +1,6 @@
 import {useEffect} from "react" 
 
-export default function useClickOut(selector , callback){
+export default function useClickOut(selector , callback , dependencies){
 
 
     useEffect(()=>{
@@ -13,5 +13,5 @@ export default function useClickOut(selector , callback){
         }
         document.addEventListener("click" , handleClick)
         return ()=> document.removeEventListener("click", handleClick)
-    },[selector])
+    },dependencies)
 }
