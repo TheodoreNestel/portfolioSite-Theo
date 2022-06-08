@@ -43,3 +43,9 @@ const IndexPage = () => {
 }
 
 export default IndexPage
+
+
+// 1. Add Content to each page
+// 2. Style each of the different pages
+// 3. Implement Navigation between pages
+// 4. If you're feeling up to it, animate the transitions between pages

@@ -32,6 +32,11 @@ function ProjectPage({ changePage }) {
 
         const card = cardContainerRef.current.querySelector(".card")
         const content = card.querySelectorAll(".card__title, .card__content > p, .card__links > li")
+        const image = card.querySelector(".card__image > img")
+
+        // Create Custom Object to animate
+        const blurObject = { blur: 50 }
+        image.style.filter = `blur(${blurObject.blur}px)`
 
         if (direction === "in" || !timeline.current) {
 
@@ -54,6 +59,14 @@ function ProjectPage({ changePage }) {
                 delay: anime.stagger(150),
                 duration: 200
             })
+            .add({
+                targets: blurObject,
+                blur: [50, 0],
+                duration: 1000,
+                update() {
+                    image.style.filter = `blur(${blurObject.blur}px)`
+                }
+            }, "-=600")
             
         } 
     

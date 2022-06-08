@@ -3,7 +3,7 @@ import React from "react";
 const Space = () => {
 
   return (
-    <div>Imagine cool space here</div>
+    <canvas></canvas>
     //unsure as to how space / planets will be rendered need more info / mentoring **
   )
 
