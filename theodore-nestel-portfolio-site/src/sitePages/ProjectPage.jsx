@@ -7,7 +7,7 @@ import useClickOut from "../utility/useClickOut";
 import anime from "animejs";
 
 
-function ProjectPage({ changePage }) {
+function ProjectPage(props) {
 
     // A flag vaiable to determine the state of animations
     const isAnimating = useRef(false)
@@ -129,6 +129,7 @@ function ProjectPage({ changePage }) {
                     <Card {...selectedProject} />
                 </div>
             )}
+              
         </div>
     )
 }

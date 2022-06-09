@@ -1,0 +1,23 @@
+{
+    "title" : "Contact me",
+    "data" : "blah blah contact synopsys blah blah maybe email here ?",
+    "links" : [
+        {
+            "link": "link1",
+            "icon": "github",
+            "title": "sampleTitle1"
+        },
+        {
+            "link": "link2",
+            "icon": "github",
+            "title": "sampleTitle2"
+        },
+        {
+            "link": "link3",
+            "icon": "github",
+            "title": "sampleTitle3"
+        }
+    ]
+    
+
+}

@@ -7,7 +7,13 @@ const bem = bemify2("MainPage");
 
 
 function MainPage(props){
-    return <h2> Main page </h2>
+    return (
+        <div className={bem()}>
+
+    <h1>Theodore Nestel</h1>
+    
+        </div>  
+    )
 }
 
 

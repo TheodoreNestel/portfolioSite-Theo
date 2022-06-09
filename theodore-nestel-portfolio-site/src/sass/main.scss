@@ -5,13 +5,16 @@
 @import"./base/reset";
 @import"components/card";
 @import "./pages/projects";
+@import "./pages/main";
+@import "./pages/about";
+@import "./pages/contact";
 
 
 
 
 
 body{
-    background-color: $beau-blue;
+    background-color: black;
     min-height: 100vh;
 
     @include phone{

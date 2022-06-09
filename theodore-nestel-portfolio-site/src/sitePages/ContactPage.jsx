@@ -1,5 +1,7 @@
 import React from "react"
 import bemify2 from "../utility/bemify"
+import Card from "../components/Card";
+import contactData from "../data/contact.json"
 
 const bem = bemify2("ContactPage");
 
@@ -7,7 +9,13 @@ const bem = bemify2("ContactPage");
 
 
 function ContactPage(props){
-    return <h2> Contact page </h2>
+    return (
+        <div className={bem()}>
+
+       <Card {...contactData} />
+
+        </div>
+    )
 }
 
 
