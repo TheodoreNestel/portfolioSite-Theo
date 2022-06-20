@@ -1,10 +1,13 @@
 import React from "react";
+import Image from "./Image"
 
 const Space = () => {
 
   return (
-    <canvas></canvas>
-    //unsure as to how space / planets will be rendered need more info / mentoring **
+    <div className="space">
+      <Image image="/space.jpeg" />
+    </div>
+    
   )
 
 }
