@@ -6,6 +6,8 @@ import Card from "../components/Card"
 import useClickOut from "../utility/useClickOut";
 import anime from "animejs";
 
+const bem = bemify2("page")
+
 
 function ProjectPage(props) {
 
@@ -110,7 +112,7 @@ function ProjectPage(props) {
     }, [selectedProject]) 
 
     return (
-        <div className="projects">
+        <div className={bem()}>
             <div style={{
                 marginBottom: "2.4rem",
                 display: "flex",

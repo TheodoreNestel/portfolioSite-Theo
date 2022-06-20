@@ -1,17 +1,17 @@
 import React from "react"
 import bemify2 from "../utility/bemify"
 
-const bem = bemify2("MainPage");
+const bem = bemify2("page");
 
 //I dont think this needs more than this I could be wrong **
 
 
-function MainPage(props){
+function MainPage(){
     return (
         <div className={bem()}>
-
-    <h1>Theodore Nestel</h1>
-    
+            <div className={bem("container","--mainTitle")}>
+                    <h1>Theodore Nestel</h1>
+            </div>
         </div>  
     )
 }

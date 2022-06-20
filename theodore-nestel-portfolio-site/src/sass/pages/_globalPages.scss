@@ -1,0 +1,32 @@
+.page{
+
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+
+    &__container{
+       
+        max-width: 96rem;
+
+        &--mainTitle{
+            height: 45vh;
+        }
+
+    }
+
+    h1{
+        margin: auto;
+        text-align: center;
+        font-family: Exodus;
+        color: #FFFFFF;
+    }
+
+    
+
+}
+
+

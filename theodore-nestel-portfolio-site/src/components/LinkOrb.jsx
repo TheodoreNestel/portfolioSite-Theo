@@ -17,7 +17,7 @@ const bem = bemify2("linkorb")
 
 function LinkOrb(props){
     return (
-        <button className={bem()} onClick={props.onClick} >Summon a card</button>
+        <button className={bem()} onClick={props.onClick} ><h5>preview</h5></button>
     )
 }
 

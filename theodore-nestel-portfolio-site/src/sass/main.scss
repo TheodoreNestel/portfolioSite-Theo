@@ -8,6 +8,9 @@
 @import "./pages/main";
 @import "./pages/about";
 @import "./pages/contact";
+@import "./components/space";
+@import "./pages/globalPages";
+@import "./components/magicButton";
 
 
 
@@ -16,36 +19,19 @@
 body{
     background-color: black;
     min-height: 100vh;
-
-    @include phone{
-        background-color: aquamarine;
-    }
-
-    background-image: url("/space.jpeg");
-    background-size: cover;
-    background-position: center;
-    
-}
-
-.test-form{
-    padding: 10rem;
-    
-    &__input{
-        display: block;
-        margin-bottom: 2rem;
-    }
-    &__button{
-        display: block;
-        padding: 1.5rem;
-        &.disabled{
-            pointer-events: none;
-            background-color: gray;
-            opacity: 50%;
-        }
-    }
+    overflow-x: hidden;
 
 }
 
+main{
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
 
+    @include flexCenter;
+
+
+}
 
 

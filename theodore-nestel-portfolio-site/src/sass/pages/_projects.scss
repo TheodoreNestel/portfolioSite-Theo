@@ -1,3 +1,39 @@
 .projects {
   padding: 6.4rem 4.8rem;
 }
+
+
+
+
+.linkorb{
+  background-color: rgba(113, 113, 134, 0.56);
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  
+
+  backdrop-filter: blur(40px);
+  text-decoration: none;
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+  transition: transform 0.3s ease-out;
+  &:hover{
+    transform: scale(1.2);
+    
+  }
+cursor: pointer;
+
+  //kinda hacky used a h element inside the button to center it inside the orb 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h5{
+    color: white;
+  }
+  
+  
+
+}
+
