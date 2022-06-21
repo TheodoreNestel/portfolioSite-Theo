@@ -1,6 +1,6 @@
 import React from "react";
 import bemify2 from "../utility/bemify";
-
+import useExitAnim from "../utility/useExitAnim";
 const bem = bemify2("magicButton")
 //this will take a string pased on one of our pages and from there know what possible directions a use can take
 
@@ -18,6 +18,7 @@ function MagicButton(props){
 let currentOptions = pageDirection[props.currentPage]
 console.log(currentOptions)
 
+    const animation = useExitAnim();
 
     return (
        <div className={bem()}>
