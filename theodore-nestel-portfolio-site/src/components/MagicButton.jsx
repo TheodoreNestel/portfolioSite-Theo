@@ -18,6 +18,7 @@ function MagicButton(props){
 let currentOptions = pageDirection[props.currentPage]
 console.log(currentOptions)
 
+    //this is the code that jebaits react into runing a final animation before unmounting the last component
     const animation = useExitAnim();
 
     return (
