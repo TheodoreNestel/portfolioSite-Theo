@@ -1,12 +1,20 @@
 import React from "react"
 import bemify2 from "../utility/bemify"
+import useExitAnim from "../utility/useExitAnim";
+
 
 const bem = bemify2("page");
 
-//I dont think this needs more than this I could be wrong **
+
+
 
 
 function MainPage(){
+
+    useExitAnim("page", async ()=>{
+        //exit anim logic goes in here
+    } )
+
     return (
         <div className={bem()}>
             <div className={bem("container","--mainTitle")}>

@@ -5,7 +5,14 @@ const Space = () => {
 
   return (
     <div className="space">
-      <Image image="/space.jpeg" />
+      <video      height="100%"
+                  width="100%"
+                  loop
+                  muted
+                  autoPlay>
+                    
+        <source src="/movingscuffed.mp4" type="video/mp4" />
+      </video>
     </div>
     
   )
@@ -14,3 +21,6 @@ const Space = () => {
 
 
 export default Space;
+
+
+//<Image image="/space.jpeg" />
