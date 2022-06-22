@@ -1,15 +1,14 @@
 import { useEffect } from "react";
 
+// Storing Object in Module Scope
 const animationLibrary = {}
 
-function useExitAnim(key , animation , dependencies=[]){
+// Hook takes key for animation, animation function, and dependency array
+function useExitAnim(key, animation, dependencies = []) {
 
     useEffect(()=>{
 
-        if(key){
-
-            animationLibrary[key] = animation;
-        }
+        if (key) animationLibrary[key] = animation
 
     } , dependencies)
 
