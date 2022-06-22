@@ -1,6 +1,6 @@
 import React from "react";
 import bemify2 from "../utility/bemify";
-import useExitAnim from "../utility/useExitAnim";
+import { useAnimation } from "../utility/useAnimation";
 const bem = bemify2("magicButton")
 //this will take a string pased on one of our pages and from there know what possible directions a use can take
 
@@ -19,13 +19,30 @@ let currentOptions = pageDirection[props.currentPage]
 console.log(currentOptions)
 
     //this is the code that jebaits react into runing a final animation before unmounting the last component
-    const animation = useExitAnim();
+    const animation = useAnimation();
+
+    console.log(animation)
 
     return (
        <div className={bem()}>
-            {currentOptions.map((pageNav)=>{
-            return <button className={bem(pageNav)} onClick={()=>props.changePage(pageNav)} key={pageNav}> {pageNav} </button>
-        })}
+            {currentOptions.map((pageNav) => (
+                <button
+                    key={pageNav}
+                    className={bem(pageNav)}
+                    onClick={async () => {
+
+                        await animation?.page()
+
+                        // await animation?.space()
+
+                        props.changePage(pageNav)
+
+                    }}
+                >
+                    {pageNav}
+                </button>
+            )
+        )}
        </div>
     )
 }

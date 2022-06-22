@@ -1,7 +1,12 @@
 import React from "react";
 import Image from "./Image"
+import { useExit } from "../utility/useAnimation";
 
 const Space = () => {
+
+  useExit("space", () => {
+    
+  })
 
   return (
     <div className="space">
