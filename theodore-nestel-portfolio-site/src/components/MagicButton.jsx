@@ -20,6 +20,7 @@ console.log(currentOptions)
 
     //this is the code that jebaits react into runing a final animation before unmounting the last component
     const animation = useAnimation();
+    
 
     console.log(animation)
 

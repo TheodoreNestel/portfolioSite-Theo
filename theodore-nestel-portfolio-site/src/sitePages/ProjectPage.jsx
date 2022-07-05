@@ -38,8 +38,7 @@ function ProjectPage(props) {
 
         // Create Custom Object to animate
         const blurObject = { blur: 50 }
-        image.style.filter = `blur(${blurObject.blur}px)`
-
+        if(image) image.style.filter = `blur(${blurObject.blur}px)`
         if (direction === "in" || !timeline.current) {
 
             // Create Timeline
