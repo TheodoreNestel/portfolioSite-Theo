@@ -120,12 +120,12 @@ function ProjectPage(props) {
                 {projectData.map((project, key) => (
                     <LinkOrb
                         key={key}
-                        onClick={() => !isAnimating.current && setSelectedProject(project)}
+                        onClick={() => !isAnimating.current&& setSelectedProject(project)}
                         title={project.title}
                     />
                 ))}
             </div>
-            {selectedProject && (
+            {selectedProject&& (
                 <div ref={cardContainerRef}>
                     <Card {...selectedProject} />
                 </div>

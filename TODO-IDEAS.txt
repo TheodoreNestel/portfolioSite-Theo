@@ -32,9 +32,14 @@ TODO
 
 
 
-Homework for monday ! 
-    -boilerplate all the new pages done !
+Theo codes full time stuff I wanna add:
 
-    -add new projects to the json 3/4 projects done 
+    -Redo nav menu to look cooler and more inline with the aesthetics --In progress
 
-    -create link orbs for each new project done 
+    -Change linkOrbs so that they make sense to use such as showing more info when hovered to reveal more info
+    -add Effect to the title page h1 -- added :D 
+
+    -add some comments to clear up some of the more confusing aspects of the site's code 
+
+
+    

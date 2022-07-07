@@ -32,7 +32,8 @@ const pages = {
 //im dumping all current base level component to make sure they work 
 
 const IndexPage = () => {
-  const [page , setPage] = useState("MainPage")
+  const [page , setPage] = useState("MainPage") //we store our current page in state for magic button
+  //that way we always know what page we are on and from there what other pages are available
   const Page = pages[page]; //this takes whatever page the useSate is holding and grabs the page object accordingly 
   
   console.log(page)
@@ -44,6 +45,8 @@ const IndexPage = () => {
       <Page changePage={setPage} />
 
       <MagicButton currentPage={page} changePage={setPage}/>
+
+      <img src="/ring1.png"/>
       
     </main>
   )

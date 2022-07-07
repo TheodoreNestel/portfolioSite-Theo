@@ -1,4 +1,28 @@
 
+h1{
+    background-image: url(https://media.giphy.com/media/ToMjGpnj5rVPxdXCT6g/giphy.gif);
+    background-size: cover;
+    color: transparent;
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
+    background-position: center;
+    
+    
+     margin: 10px 0;
+}
+
+img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 10;
+
+    //I suspect a component issue for why its not doing what I want 
+}
 
 
+//the second one is the one I like most for now 
 
+//https://media.giphy.com/media/5Yooo0mH1LIJQD1Thj/giphy-downsized-large.gif
+
+//https://media.giphy.com/media/ToMjGpnj5rVPxdXCT6g/giphy.gif

@@ -35,3 +35,21 @@ main{
 }
 
 
+//I dont know if I can style in here but either way the ring wont work in its current size ]
+//the actual img is a rectangle which is fucking with positioning since the white space 
+//is calculated when trying to size it 
+img{
+    position: absolute;
+    //animation: rotate 5s infinite;
+    
+    height: 90%;
+    width: 90%;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+  }
+
+
