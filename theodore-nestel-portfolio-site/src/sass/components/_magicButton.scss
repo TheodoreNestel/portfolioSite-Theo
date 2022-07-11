@@ -15,31 +15,45 @@
     //this had to be removed for anim purpose
     //overflow: hidden;
 
-    padding: 0rem 1.2rem;
+    padding: 3rem;
 
     justify-content: center;
+    align-items: center;
 
-    
-    .preButtonTitle{
-        color: white;
-        font-family:Exodus ;
-        border-radius: 30%;
-
-        //box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
-        //animation: pulse 2s infinite;
+    &__explore{
         position: absolute;
-        bottom: 4rem;
+        transition: all 0.25s ease;
+       
+        h4{
+            color: white;
+            font-family:Exodus ;
+            border-radius: 30%;
+            //box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+            animation: pulse 2s infinite;
+        }
+    }
+   
+    &:hover &__explore{
+        transform: translateY(-4rem);
+        opacity: 0;
 
     }
 
+    &__buttons--animated{
+        opacity: 0;
+        transition: all 0.25s ease;
+        
+    }
+    &:hover &__buttons--animated{
+        opacity: 1;
+    }
    
 
     
        
 
     button{
-        //issue all buttons are now invisible
-        visibility: visible;
+       
         background: none;
         border: none;
         padding: 8px;
@@ -55,21 +69,6 @@
     
 
 
-    @keyframes revealCool {
-
-        0%{
-            width: 0px;
-        }
-
-        50%{
-            width: 200px
-        }
-        100%{
-            width: 400px;
-        }
-        
-    }
-
     @keyframes pulse {
         0% {
             transform: scale(0.95);
@@ -78,7 +77,7 @@
     
         70% {
             transform: scale(1);
-            box-shadow: 0 0 0 10px rgba(225, 255, 225, 0);
+            box-shadow: 10 10 0 10px rgba(225, 255, 225, 0);
         }
     
         100% {

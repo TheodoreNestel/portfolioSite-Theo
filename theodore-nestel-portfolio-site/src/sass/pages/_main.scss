@@ -6,6 +6,7 @@ h1{
     -moz-background-clip: text;
     -webkit-background-clip: text;
     background-position: center;
+    mix-blend-mode: exclusion;
     
     
      margin: 10px 0;
@@ -15,7 +16,7 @@ img{
     height: 100%;
     width: 100%;
     object-fit: cover;
-    z-index: 10;
+    z-index: -5; //this fucked with our linkorbs 
 
     //I suspect a component issue for why its not doing what I want 
 }

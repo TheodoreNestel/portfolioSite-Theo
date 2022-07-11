@@ -34,16 +34,22 @@ main{
 
 }
 
+//this holds the site together need help pls 
+// img{
+//     position: absolute;
+//     object-fit: fill;    
+//     height: 100%;
+//     width: 100%;
+// }
 
-//I dont know if I can style in here but either way the ring wont work in its current size ]
-//the actual img is a rectangle which is fucking with positioning since the white space 
-//is calculated when trying to size it 
-img{
+.ringu{
     position: absolute;
-    //animation: rotate 5s infinite;
-    
-    height: 90%;
-    width: 90%;
+    animation: rotate 30s linear ;
+    object-fit: contain;
+    height: 180%;
+    width:180%;
+    z-index: -1;
+    animation-iteration-count: infinite;
 }
 
 @keyframes rotate {
