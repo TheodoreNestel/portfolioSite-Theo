@@ -122,6 +122,7 @@ function ProjectPage(props) {
                         key={key}
                         onClick={() => !isAnimating.current&& setSelectedProject(project)}
                         title={project.title}
+                        icon={project.iconTitle}
                     />
                 ))}
             </div>

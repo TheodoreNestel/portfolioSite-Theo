@@ -13,7 +13,9 @@
             },
             {"link": "email:coolEmail@email", "title": "coolEmail@email", "icon": "mail"
             }
-        ]
+
+        ],
+        "iconTitle":"foxBoyIcon"
     },
 
     {
@@ -36,7 +38,8 @@
                 "icon": "github",
                 "title": "sampleTitle3"
             }
-        ]
+        ],
+        "iconTitle" : "pokemonIcon"
     },
 
     {
@@ -59,6 +62,7 @@
                 "icon": "github",
                 "title": "sampleTitle3"
             }
-        ]
+        ],
+        "iconTitle" : "pokemonIcon"
     }
 ]

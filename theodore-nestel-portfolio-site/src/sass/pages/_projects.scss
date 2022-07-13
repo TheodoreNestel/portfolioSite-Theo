@@ -1,4 +1,7 @@
 
+//this file is a little haunted pls show Arjun
+
+
 .projects {
   padding: 6.4rem 4.8rem;
 }
@@ -8,28 +11,96 @@
 
 .linkorb{
   background-color: rgba(113, 113, 134, 0.56);
-  border-style: solid;
-  border-width: 1px;
-  border-color: white;
   
+  
+  //background-color: transparent;
+  backdrop-filter: blur(1.5px); //this removes the image for some reason 
 
-  backdrop-filter: blur(40px);
+
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
   text-decoration: none;
+
   border-radius: 50%;
   height: 5rem;
   width: 5rem;
+
+ 
+
   transition: transform 0.3s ease-out;
+
+  position: relative;
+  z-index: 1;
+
+
+  
+
+
   &:hover{
     transform: scale(1.2);
   }
-cursor: pointer;
 
-  //kinda hacky used a h element inside the button to center it inside the orb 
- 
-  h5{
-    color: white;
+
+  //kinda hacky used a img element inside the button to center it inside the orb 
+
+  .linkorb__favIcon{
+    z-index: 1;
   }
+
+
+ 
+  
   
   @include flexCenter;
 
 }
+
+
+
+
+.linkorb:before {
+  content: '';
+  background: linear-gradient(45deg, $ghost-white ,$beau-blue,$rich-black,$dim-grey,$beau-blue );
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 1;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+
+  //stagger code that doesnt work for some reason
+  @for $i from 1 through 50 {
+    &:nth-child(#{$i}) {
+      animation-delay: 100ms * $i;
+    }
+  }
+
+}
+
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+
+//#ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000
+
+
+$black: #000;
+$pink: pink;
+$bright-yellow: #FAA916;
+$ghost-white: #FFFAFF;
+$beau-blue: #AAC7DA;
+$rich-black: #000411;
+$dim-grey: #6D676E;

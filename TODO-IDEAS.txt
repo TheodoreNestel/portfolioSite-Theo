@@ -37,9 +37,22 @@ Theo codes full time stuff I wanna add:
     -Redo nav menu to look cooler and more inline with the aesthetics --In progress
 
     -Change linkOrbs so that they make sense to use such as showing more info when hovered to reveal more info
+        -current approach for favicon is to store them locally and then call them in the actual component
+        need arjun for clarity 
+
+
+
     -add Effect to the title page h1 -- added :D 
 
-    -add some comments to clear up some of the more confusing aspects of the site's code 
+    -add some comments to clear up some of the more confusing aspects of the site's code -- inprogress
 
 
+    
+
+
+Design ideas **Arjun needed 
+    -Space could render a different video based on the page to keep it cool and unique 
+    -Id like the nav to turn into three directions bottom left and right
+        -and when clicked the screen is animated in that direction and shows the new video/zone
+    -maybe move the ring based on which page you are
     

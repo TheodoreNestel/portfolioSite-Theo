@@ -2,6 +2,12 @@ import React from "react"
 import bemify2 from "../utility/bemify"
 
 
+//structure key should be identical to file name to reduce confusion
+const favIcons ={
+    foxBoyIcon : "./foxBoyIcon.png",
+    pokemonIcon : "./pokemonIcon.png"
+}
+
 
 const bem = bemify2("linkorb")
 
@@ -17,7 +23,14 @@ const bem = bemify2("linkorb")
 
 function LinkOrb(props){
     return (
-        <button className={bem()} onClick={props.onClick} > <h5>preview</h5> </button>
+        <button className={bem()}
+        onClick={props.onClick}>    
+        <img 
+        src={favIcons[props.icon]}
+        className={bem("favIcon")}
+        />
+
+        </button>
     )
 }
 

@@ -44,11 +44,12 @@ main{
 
 .ringu{
     position: absolute;
-    animation: rotate 30s linear ;
+    animation: rotate 200s linear ;
     object-fit: contain;
-    height: 180%;
-    width:180%;
+    height: 188%;
+    width:188%;
     z-index: -1;
+    top:65rem;
     animation-iteration-count: infinite;
 }
 

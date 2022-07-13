@@ -1,0 +1,29 @@
+Here will be intructions on how to add / remove projects 
+
+
+    -Adding a project
+        -go to projects.json 
+        
+        -data layout 
+
+            {
+        "title": "Name of that particula site",
+        "data": "Information about the site here",
+        "img": "a img url pretinent to the site such as a screenshot of it",
+        "links": [
+            {
+                "link": "link to the site",
+                "icon": "a icon key based on available ones in the icon component's library",
+                "title": "potentially deprecated"
+            },
+            {"link": " link to somewhere ", "icon": "same as above", "title": "same as above"
+            },
+            {"link": "email:coolEmail@email", "title": "coolEmail@email", "icon": "mail"
+            }
+
+        ],
+        "iconTitle":"the name of the locally stored favicon in the public directory name must be the same
+        as the name of the file / then you must go to linkOrb component and add an entry to the object 
+        at the top of the page. key will be the name of the file and the data will be the local link 
+        ./whatever.png"
+    }

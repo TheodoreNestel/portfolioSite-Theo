@@ -14,6 +14,14 @@ const pageDirection = {
     ProjectPage: ["MainPage"]
 }
 
+//an object that can translate the above object into clean string for display to user
+const cleanPageNames = {
+    MainPage: "Home",
+    ContactPage: "Contact",
+    AboutPage: "About",
+    ProjectPage: "Works"
+}
+
 
 //need to style this to look pretty but working nav lets go 
 function MagicButton(props) {
@@ -22,6 +30,8 @@ function MagicButton(props) {
 
 
     ///////////////////////test code////////////////////////////
+
+    //DEPRECATED 
 
     //state to keep track of our onHover event listener 
     const [hovered, setHovered] = useState(false);
@@ -68,7 +78,7 @@ function MagicButton(props) {
         setHovered(true);
         isAnimating.current = false;
 
-
+        ///DEPRECATED ^ 
     }
 
     
@@ -104,7 +114,7 @@ function MagicButton(props) {
                             props.changePage(pageNav)
 
                         }}>
-                        {pageNav}
+                        {cleanPageNames[pageNav]}
                     </button>
                 )
                 )}
