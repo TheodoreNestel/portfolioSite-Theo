@@ -61,30 +61,34 @@
 
 
 
-.linkorb:before {
-  content: '';
-  background: linear-gradient(45deg, $ghost-white ,$beau-blue,$rich-black,$dim-grey,$beau-blue );
-  position: absolute;
-  top: -2px;
-  left:-2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing 20s linear infinite;
-  opacity: 1;
-  transition: opacity .3s ease-in-out;
-  border-radius: 10px;
+.linkorb{
 
-  //stagger code that doesnt work for some reason
   @for $i from 1 through 50 {
-    &:nth-child(#{$i}) {
-      animation-delay: 100ms * $i;
+    &:nth-child(#{$i}):before {
+      animation-delay: 1000ms * $i;
     }
-  }
 
+  }
+  &:before {
+    content: '';
+    background: linear-gradient(45deg, $ghost-white ,$beau-blue,$rich-black,$dim-grey,$beau-blue );
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 40s linear infinite;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+  
+  
+  }
 }
+
 
 
 @keyframes glowing {
