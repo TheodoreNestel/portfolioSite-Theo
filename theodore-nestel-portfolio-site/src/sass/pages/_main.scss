@@ -10,15 +10,24 @@ h1{
     
     
      margin: 10px 0;
+
+
+     @include mini-phone{
+        font-size: 60px;
+     }
+
+     @include phone{
+        font-size: 65px;
+     }
 }
 
-img{
+img{ //space image
     height: 100%;
     width: 100%;
     object-fit: cover;
     z-index: -5; //this fucked with our linkorbs 
 
-    //I suspect a component issue for why its not doing what I want 
+    
 }
 
 

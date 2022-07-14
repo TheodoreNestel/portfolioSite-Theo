@@ -7,12 +7,14 @@
     align-items: center;
     height: 100%;
 
-
+    
+    //The code that sizes the contents inside page
     &__container{
-       
+        
         max-width: 96rem;
 
-        &--mainTitle{
+
+        &--mainTitle{ //I assume this style my name's position
             height: 45vh;
         }
 
@@ -33,6 +35,13 @@
         color: #FFFFFF;
     }
 
+    //responsize sizing code is all in card so far minus .ringu which is in main.scss
+
+   
+       
+
+
+    
     
 
 }

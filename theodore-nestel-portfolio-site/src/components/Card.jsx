@@ -20,7 +20,7 @@ const Card = (props) => {
           </div>
         )}
 
-       <div className={bem("main",[!!props.img,"--min"])}>
+       <div className={bem("main")}>
             <h3 className={bem("title")}>{props.title}</h3>
             <div className={bem("content")}>
               {Array.isArray(props.data) ? 

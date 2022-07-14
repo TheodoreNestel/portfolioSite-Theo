@@ -51,12 +51,40 @@ main{
     z-index: -1;
     top:65rem;
     animation-iteration-count: infinite;
+
+//responsive sizes 
+//bigges first down the line or eat shit lol
+
+    //THEO NOTES styling card is where to be __main dictates size **arjun (why does it do that?)
+    
+
+    @include laptop{
+        top:60rem;
+    }
+
+    @include sideways-blet{
+        top: 40rem;
+    }
+
+    @include tablet{
+        top: 55rem;
+    }
+
+    @include phone{
+        top: 24rem;
+    }
+
+    
 }
 
+
+//Animation logic 
 @keyframes rotate {
     100% {
         transform: rotate(360deg);
     }
   }
+
+
 
 

@@ -13,6 +13,8 @@
 
     overflow: hidden;
 
+    
+
 
 
 
@@ -33,6 +35,7 @@
         &--min{
             padding-top: 3rem;
         }
+       
     }
 
     &__links{
@@ -58,6 +61,70 @@
           
         }
     }
+
+
+    //reponsive styling its all here babee
+
+
+    @include phone{
+        width: 30rem;
+        height:40rem;
+   
+    &__main h3{
+        font-size: 30px;
+    }
+    &__main{
+
+        padding: 1.2rem 1.6rem;
+        width: 30rem;
+        height:40rem;
+
+        gap: 2rem;
+
+        @include flexCenter;
+        
+    }
+    &__main p{
+        font-size: 13px;
+        line-height: 20px;
+    }
+
+    &__image{
+        height: 0rem;
+    }
+}
+    
+    
+
+    @include mini-phone{
+            width: 30rem;
+            height:40rem;
+       
+        &__main h3{
+            font-size: 30px;
+        }
+        &__main{
+
+            padding: 1.2rem 1.6rem;
+            width: 30rem;
+            height:40rem;
+
+            gap: 2rem;
+
+            @include flexCenter;
+            
+        }
+        &__main p{
+            font-size: 13px;
+            line-height: 20px;
+        }
+
+        &__image{
+            height: 0rem;
+        }
+    }
+
+    
 
 }
 
