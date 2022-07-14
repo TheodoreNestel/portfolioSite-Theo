@@ -46,7 +46,7 @@ const IndexPage = () => {
 
       <MagicButton currentPage={page} changePage={setPage}/>
 
-      <img className="ringu" src="/fixedImgRingMaybe.png"/>
+      <img className="ringu" src="/newRingu.png"/>
       
     </main>
   )

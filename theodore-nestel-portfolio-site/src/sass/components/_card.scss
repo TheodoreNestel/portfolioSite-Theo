@@ -65,6 +65,63 @@
 
     //reponsive styling its all here babee
 
+    //essentially the code is copy pasted with different values now. or just leaving stuff out
+
+    @include laptop{
+
+        width: 80rem;
+
+        &__main{
+ 
+            width: 80rem;
+           
+            
+            padding: 2.2rem 5.6rem;
+            
+            @include flexCenter;
+            
+        }
+
+        &__image{
+           height: 10%;
+        }
+
+        
+    }
+
+    @include sideways-blet{
+
+        width: 70rem;
+       
+    &__main{
+ 
+        width: 70rem;
+
+
+        @include flexCenter;
+        
+    }
+    
+
+    }
+
+    @include tablet{
+    
+        //still think the way sizing works is strange here **arjun
+    width: 70rem;
+       
+    &__main{
+ 
+        width: 70rem;
+
+
+        @include flexCenter;
+        
+    }
+    
+
+    }
+
 
     @include phone{
         width: 30rem;
