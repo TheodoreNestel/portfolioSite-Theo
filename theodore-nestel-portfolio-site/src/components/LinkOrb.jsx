@@ -4,8 +4,8 @@ import bemify2 from "../utility/bemify"
 
 //structure key should be identical to file name to reduce confusion
 const favIcons ={
-    foxBoyIcon : "./foxBoyIcon.png",
-    pokemonIcon : "./pokemonIcon.png"
+    foxBoyIcon : "/foxBoyIcon.png",
+    pokemonIcon : "/pokemonIcon.png"
 }
 
 
