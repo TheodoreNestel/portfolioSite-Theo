@@ -65,4 +65,12 @@ Design ideas **Arjun needed
 
     -fun challenge use css clamp ?
 
+
+
+
+
+assets needed vignette for menu sizes need square landscape rectangle and vertical retangle 
+planet textures - onhold 
+
+
     

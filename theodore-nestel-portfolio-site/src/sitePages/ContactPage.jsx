@@ -83,7 +83,7 @@ function ContactPage(props){
     })
 
     return (
-        <div ref={container} className={bem()}>
+        <div ref={container} className={bem("container")}>
 
        <Card {...contactData} />
 
