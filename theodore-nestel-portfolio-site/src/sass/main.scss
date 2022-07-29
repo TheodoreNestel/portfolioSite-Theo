@@ -27,7 +27,7 @@ main{
     height: 100vh;
     position: relative;
     overflow: hidden;
-    width: 100%;
+    //width: 100%;
 
     @include flexCenter;
 
@@ -49,7 +49,7 @@ main{
     height: 188%;
     width:188%;
     z-index: -1;
-    top:59rem;
+    top:60rem;
     animation-iteration-count: infinite;
 
 //responsive sizes 

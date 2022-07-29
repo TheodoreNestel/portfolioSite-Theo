@@ -50,21 +50,6 @@ Theo codes full time stuff I wanna add:
     
 
 
-Design ideas **Arjun needed 
-
-    -Space could render a different video based on the page to keep it cool and unique 
-
-
-    -Id like the nav to turn into three directions bottom left and right
-        -and when clicked the screen is animated in that direction and shows the new video/zone
-
-
-    -maybe move the ring based on which page you are
-
-
-
-    -fun challenge use css clamp ?
-
 
 
 
@@ -72,5 +57,12 @@ Design ideas **Arjun needed
 assets needed vignette for menu sizes need square landscape rectangle and vertical retangle 
 planet textures - onhold 
 
+
+
+
+
+Arjun questions. 
+    -How does box size affect typography and how can I still both while not breaking either styles
+    -How do I apply scroll to card but only on certain sizes //potential fix 
 
     

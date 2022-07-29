@@ -12,7 +12,7 @@
     &__container{
         
         max-width: 96rem;
-        width: 100%;
+        width: 100%; //this makes smaller boxes with less content still stretch weird 
 
 
         &--mainTitle{ //I assume this style my name's position
