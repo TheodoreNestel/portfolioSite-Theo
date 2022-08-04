@@ -48,7 +48,7 @@ Theo codes full time stuff I wanna add:
 
 
     
-
+the
 
 
 
@@ -64,5 +64,10 @@ planet textures - onhold
 Arjun questions. 
     -How does box size affect typography and how can I still both while not breaking either styles
     -How do I apply scroll to card but only on certain sizes //potential fix 
+
+
+
+
+TESTING NEW GIT 
 
     
