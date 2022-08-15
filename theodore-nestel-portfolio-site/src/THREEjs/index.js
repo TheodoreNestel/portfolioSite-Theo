@@ -8,9 +8,7 @@ let canvas //this will be given a ref from our space component
 ///THREE LOGIC GOES HERE vvvv//////////
 //might need to place inside a function 
 
-//test :/ 
 
-function test(){ //function that will only run after canvas 
     //Create the scene 
 const scene = new THREE.Scene()
 
@@ -27,8 +25,8 @@ scene.add(mesh)//we then add it to our scene
 //SIZES the size of our camera / scene 
 
 const sizes = {
-    width : 800,
-    height : 800
+    width : window.innerWidth,
+    height : window.innerHeight
 }
 //we're going to create an event listener that will resize our canvas if the window is resized 
 window.addEventListener('resize',()=>{
@@ -69,7 +67,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio , 2))
 
 
 const clock = new THREE.Clock()
-}
+
 
 
 //////////////////////////////////////
@@ -91,7 +89,6 @@ export const useTHREETicker = (ref) => {
 
     canvas = ref.current
 
-    test()
 
     tickId = window.requestAnimationFrame(tick) //now runs everyframe 
     
