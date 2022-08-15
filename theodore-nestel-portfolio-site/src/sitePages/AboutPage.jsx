@@ -74,6 +74,7 @@ function AboutPage(){
                 return timeLine.finished
     })
 
+    useExit('space',"moveToPlanetAbout")
 
     //clean up dupe code dummy
 

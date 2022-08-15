@@ -73,3 +73,16 @@ TESTING NEW GIT
 test 2 git
 
     
+
+
+
+
+
+
+REVAMP AUGUST 2022
+
+    -re style cards so they look more clean 
+    -stars in three using particles  -Start
+    -render sphere/plantes 
+    -find a way to move camera in a non throw up way 
+    -
