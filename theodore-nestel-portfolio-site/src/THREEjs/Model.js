@@ -39,6 +39,8 @@ export default class Model {
     // Updatate Canvas Reference
     this.canvas = canvas
 
+    // Update the renderer here
+
     // Start The tick again
     this.startTick()
 
