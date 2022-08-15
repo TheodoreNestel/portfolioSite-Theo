@@ -6,6 +6,8 @@ export default class Model {
 
     this.canvas = canvas
     this.tickID = undefined
+    this.sizes = {}
+
 
   }
 
@@ -23,9 +25,16 @@ export default class Model {
     this.tickID = window.requestAnimationFrame(this.tick)
   }
 
+
   init() {
 
     // This is where you put the logic to get started with threejs
+
+    // Set Canvas Size
+    this.setCanvasSize()
+
+    // Add Event Listener to handle sreen resize
+    window.addEventListener("resize", () => this.setCanvasSize())
 
     // Finally Start running the ticker
     this.startTick()
@@ -35,8 +44,17 @@ export default class Model {
 
   }
 
+  setCanvasSize = () => {
+    this.sizes = {
+      height: window.innerHeight,
+      width: window.innerWidth
+    }
+
+    this.sizes.ratio = this.sizes.height / this.sizes.width
+  }
+
   // Update Canvas Element Function
-  updateCanvas(canvas) {
+  update(canvas) {
 
     // Stop The tick
     this.stopTick()
@@ -63,7 +81,9 @@ export default class Model {
   }
 
   // Future change planet logic
-  changePlanet() {
+  changePlanet(planet) {
+
+    console.log(`Change to planet ${planet}`)
 
   }
 

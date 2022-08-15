@@ -1,7 +1,6 @@
-import React , {useRef , useEffect} from "react";
-import Image from "./Image"
+import React , { useRef } from "react";
 import { useAnimation} from "../utility/useAnimation";
-import { useTHREETicker } from "../THREEjs";
+import { useTHREE, useTransition } from "../THREEjs";
 
 
 
@@ -11,22 +10,16 @@ const Space = () => {
 
 
   //tldr of this we use useEnter/useExit to pass data based on mount or unmount 
-  const {space:target} = useAnimation()
+  const { space: target } = useAnimation()
 
 
 
-  useTHREETicker(canvas) //this will handle the mount and unmount of canvas 
+  useTHREE(canvas) //this will handle the mount and unmount of canvas 
+
+  // This will handle transitions
+  useTransition(target)
 
   
-
-
-  //this will run when target changes so when we change planets in theory
-  useEffect(()=>{
-    
-  },[target])
-
-
-
   //the above garbage lets us run functions based on the pages we are in using useEnter 
   //we need to export functions from THREE which will handle the change of planets 
 
