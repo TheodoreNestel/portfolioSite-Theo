@@ -20,8 +20,12 @@ export default class Model {
 
   init() {
 
-    sthis.startTick()
+    // This is where you put the logic to get started with threejs
 
+    // Finally Start running the ticker
+    this.startTick()
+
+    // Return class instance for chaining
     return this
 
   }
