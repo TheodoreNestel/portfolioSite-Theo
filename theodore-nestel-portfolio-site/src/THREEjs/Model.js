@@ -22,6 +22,8 @@ export default class Model {
 
     sthis.startTick()
 
+    return this
+
   }
 
   // Update Canvas Element Function
