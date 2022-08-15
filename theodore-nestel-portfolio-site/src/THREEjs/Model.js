@@ -1,0 +1,57 @@
+import * as THREE from 'three';
+
+export default class Model {
+
+  constructor(canvas) {
+
+    this.canvas = canvas
+
+  }
+
+  // This is the actual tick function
+  tick = () => {
+
+  }
+
+  // Helper function so that we can start ticks
+  startTick() {
+    this.tickID = window.requestAnimationFrame(this.tick)
+  }
+
+  init() {
+
+    sthis.startTick()
+
+  }
+
+  // Update Canvas Element Function
+  updateCanvas(canvas) {
+
+    // Stop The tick
+    this.stopTick()
+
+    // Updatate Canvas Reference
+    this.canvas = canvas
+
+    // Start The tick again
+    this.startTick()
+
+  }
+
+  // Function To Start the tick
+  stopTick() {
+
+    // Cancel Animation Frame If Running
+    if (this.tickID) window.cancelAnimationFrame(this.tickID)
+
+    // Reset Tick ID variable
+    this.tickID = undefined
+
+  }
+
+  // Future change planet logic
+  changePlanet() {
+
+  }
+
+}
