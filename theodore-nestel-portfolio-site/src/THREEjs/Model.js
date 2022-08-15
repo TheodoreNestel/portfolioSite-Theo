@@ -5,6 +5,7 @@ export default class Model {
   constructor(canvas) {
 
     this.canvas = canvas
+    this.tickID = undefined
 
   }
 
