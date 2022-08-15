@@ -12,6 +12,10 @@ export default class Model {
   // This is the actual tick function
   tick = () => {
 
+
+    // Call the tick function again
+    this.startTick()
+
   }
 
   // Helper function so that we can start ticks
