@@ -27,8 +27,8 @@ scene.add(mesh)//we then add it to our scene
 //SIZES the size of our camera / scene 
 
 const sizes = {
-    width : 800,
-    height : 800
+    width : window.innerWidth,
+    height : window.innerHeight
 }
 //we're going to create an event listener that will resize our canvas if the window is resized 
 window.addEventListener('resize',()=>{
