@@ -2,6 +2,7 @@ import React, { useState, useRef, useLayoutEffect } from "react";
 import bemify2 from "../utility/bemify";
 import { useAnimation } from "../utility/useAnimation";
 import anime, { timeline } from "animejs";
+import { useTransition } from "../THREEjs";
 
 const bem = bemify2("magicButton")
 //this will take a string pased on one of our pages and from there know what possible directions a use can take
@@ -84,7 +85,8 @@ function MagicButton(props) {
     
 
 
-    let currentOptions = pageDirection[props.currentPage] //this sets up our current nav options 
+    let currentOptions = pageDirection[props.currentPage] //this sets up our current nav options
+    //by setting currentPage to an array of all possible pages you can navigate to from it  
 
 
     //this is the code that jebaits react into runing a final animation before unmounting the last component
@@ -112,7 +114,7 @@ function MagicButton(props) {
 
                             await animation?.page()
                             props.changePage(pageNav)
-
+                            
                         }}>
                         {cleanPageNames[pageNav]}
                     </button>
@@ -126,6 +128,9 @@ function MagicButton(props) {
     )
 }
 
+
+//the onClick above is on each button which will have its own eventlistener ready to change the page to 
+//the button's key which is its page 
 
 
 export default MagicButton

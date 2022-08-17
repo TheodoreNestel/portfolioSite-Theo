@@ -8,9 +8,9 @@ let model
 export const useTHREE = (ref) => {
 
   useEffect(() => {
-
+    if(!ref.current) return
     // Initialize New Model or Update Existing Model
-    if (!model) model = new Model(ref.canvas).init()
+    if (!model) model = new Model(ref.current).init()
     else model.update(ref.current)
 
     // Just stop the tick in case
@@ -20,14 +20,15 @@ export const useTHREE = (ref) => {
 
 }
 
-export const useTrasition = (planet) => {
+export function useTransition(planet){
 
   useEffect(() => {
 
-    if (!model) return
+    if (!model || !planet) return
 
     // Just an example of how we can call a method from our model
     model.changePlanet(planet)
+    
 
   }, [planet]) 
 
