@@ -1,4 +1,8 @@
+import React from 'react';
 import * as THREE from 'three';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
+import {FBXLoader} from 'three/examples/jsm/loaders/FBXLoader.js'
+import anime, { timeline } from 'animejs'
 
 
 
@@ -96,14 +100,18 @@ export default class Model {
         x : 0 , 
         y : 0 , 
         z : 3,
-        fov : 50
+        fov : 55
       }
 
     }
 
     //texture loader 
     const textureLoader = new THREE.TextureLoader()
-     
+
+    //GLTFF loader 
+    const gltfLoader = new GLTFLoader()
+    const fbxLoader = new FBXLoader()
+    
 
     //Create the scene 
     this.scene = new THREE.Scene()
@@ -112,18 +120,28 @@ export default class Model {
     //OBJECTS 
 
     //Planet default Geometry
-    const geometry = new THREE.SphereGeometry(1, 32, 16) //we create our sphere geometry we will reuse this 
+    const geometry = new THREE.SphereGeometry(1, 32, 32) //we create our sphere geometry we will reuse this 
+    
 
     //planet 1 code 
-    const material1 = new THREE.MeshBasicMaterial({ color: 0xff0000 })//we create our planet1 material
+    const planet1Textures = textureLoader.load("2k_haumea_fictional.jpeg")
+    planet1Textures.generateMipmaps = false
+    planet1Textures.minFilter = THREE.NearestFilter
+    const material1 = new THREE.MeshStandardMaterial({ map: planet1Textures })//we create our planet1 material
     this.planet1 = new THREE.Mesh(geometry, material1)//we combine the two to make our cube mesh
     this.scene.add(this.planet1)//we then add it to our scene 
     this.planet1.position.x = this.dasPositionsJa.planet1.x 
     this.planet1.position.y = this.dasPositionsJa.planet1.y 
     this.planet1.position.z = this.dasPositionsJa.planet1.z 
 
-    //planet 2 code 
-    const material2  = new THREE.MeshBasicMaterial({ color: 'cyan' })
+    //planet 2 code //TEST MARS 
+    const planet2TextureColors = textureLoader.load("MarsColorMap.jpg")
+    const planet2TextureBump = textureLoader.load("MarsBumpMap.png")
+    const material2  = new THREE.MeshStandardMaterial({
+       map: planet2TextureColors,
+       bumpMap :  planet2TextureBump
+      })
+    material2.bumpScale = 0.09
     this.planet2 = new THREE.Mesh(geometry, material2)
     this.scene.add(this.planet2)
     this.planet2.position.x = this.dasPositionsJa.planet2.x 
@@ -131,7 +149,7 @@ export default class Model {
     this.planet2.position.z = this.dasPositionsJa.planet2.z 
 
     //planet 3 code 
-    const material3  = new THREE.MeshBasicMaterial({ color: 'green' })
+    const material3 = new THREE.MeshStandardMaterial({ color: 'green' })
     this.planet3 = new THREE.Mesh(geometry, material3)
     this.scene.add(this.planet3)
     this.planet3.position.x = this.dasPositionsJa.planet3.x 
@@ -139,12 +157,22 @@ export default class Model {
     this.planet3.position.z = this.dasPositionsJa.planet3.z 
 
     //planet 4 code 
-    const material4  = new THREE.MeshBasicMaterial({ color: 'purple' })
+    const material4 = new THREE.MeshStandardMaterial({ color: 'purple' })
     this.planet4 = new THREE.Mesh(geometry, material4)
     this.scene.add(this.planet4)
     this.planet4.position.x = this.dasPositionsJa.planet4.x 
     this.planet4.position.y = this.dasPositionsJa.planet4.y 
     this.planet4.position.z = this.dasPositionsJa.planet4.z 
+
+    //LIGHTS //IDEA cool camera / light work 
+    //the light could change positions during animation to add cool effects 
+    const light = new THREE.PointLight(0xffffff , 2.0)
+    light.position.set(2 , 3 , 1)
+    //light.distance = 100 
+    
+    
+    this.scene.add(light)
+    
 
     //particles     
     const particleMat = new THREE.PointsMaterial({
@@ -198,10 +226,10 @@ export default class Model {
       let i3 = i * 3
 
       //the -0.5 gets us a random value between 0.5 and -0.5 which centers the randomness around 0 the middle
-      //then me * by a value to get random values much further out 
+      //then me * by a value to get random values much further out ** KEEP THEM BEHIND 
       positions[i3] = (Math.random()-0.5) * 60 //x 
       positions[i3 + 1] = (Math.random()-0.5) * 60 //y 
-      positions[i3 + 2] = (Math.random()-0.5) * -60//z -60 on the z to keep the particles behind our planets 
+       positions[i3 + 2] = (Math.random()-0.5) * 60//z -60 on the z to keep the particles behind our planets 
 
       //we get a random array of rgb values from our array of space colors  
       randomlySelectedRGB = getRandomItem(spaceColorOptions)
@@ -315,6 +343,9 @@ export default class Model {
     this.time = currentTime
     
 
+    //PLANET ROTATIONS 
+    this.planet1.rotation.y += 0.0001 * deltaTime
+    this.planet2.rotation.x += 0.0001 * deltaTime
     
     //CAMERA MOVEMENT we update our camera
     this.camera.updateProjectionMatrix();
@@ -392,15 +423,26 @@ export default class Model {
 
     //Basic camera location switching based on which page we are on 
     if(planet === "ProjectPage"){
-      this.camera.position.x = this.dasPositionsJa.planet2.x 
-      this.camera.position.y = this.dasPositionsJa.planet2.y
+      const cameraTimeline = anime.timeline()
+      cameraTimeline.add({
+        targets : [this.camera.position],
+        x : this.dasPositionsJa.planet2.x,
+        y: this.dasPositionsJa.planet2.y,
+        easing : "easeInOutSine",
+        duration : "2000"
+      })
+      // this.camera.position.x = this.dasPositionsJa.planet2.x 
+      // this.camera.position.y = this.dasPositionsJa.planet2.y
       console.log("planet does equal aboutpage")
+      return cameraTimeline.finished
     }
+
     if(planet === "AboutPage"){
       this.camera.position.x = this.dasPositionsJa.planet3.x 
       this.camera.position.y = this.dasPositionsJa.planet3.y
       console.log("planet does equal aboutpage")
     }
+    
     if(planet === "ContactPage"){
       this.camera.position.x = this.dasPositionsJa.planet4.x
       this.camera.position.y = this.dasPositionsJa.planet4.y

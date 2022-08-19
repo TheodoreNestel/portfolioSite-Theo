@@ -37,7 +37,7 @@ const IndexPage = () => {
   //that way we always know what page we are on and from there what other pages are available
   const Page = pages[page]; //this takes whatever page the useSate is holding and grabs the page object accordingly
   
-  //TEST THREEJS CAM ANIMATION CODE 
+  //THREEJS CAM ANIMATION CODE 
   useTransition(page)
   
 
