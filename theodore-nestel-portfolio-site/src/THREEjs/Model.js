@@ -50,10 +50,17 @@ export default class Model {
     this.planet4 = undefined
     //Three Js Particles
     this.particles = undefined
+    this.shineParticles = undefined
     this.particleGeo = undefined
+    this.shineParticleGeo = undefined
+    this.shineParticleMaterial = undefined
     this.colorArr =  new Float32Array()
-    //Misc vars
     this.count = undefined
+    this.shineCount = undefined
+    this.shineParticleValues = {}
+    //lights
+    this.light = undefined
+    //Misc vars
     this.frameCount = undefined
     this.time = undefined
 
@@ -82,27 +89,34 @@ export default class Model {
         z : 0
       },
       planet2 : {
-        x : -5,
-        y : 0, 
-        z : 0
-      },
-      planet3 : {
         x : 5,
         y : 0, 
         z : 0
       },
-      planet4 : {
+      planet3 : {
         x : 0,
         y : 5, 
+        z : 0
+      },
+      planet4 : {
+        x : -5,
+        y : 0, 
         z : 0
       },
       camera : {
         x : 0 , 
         y : 0 , 
-        z : 3,
+        z : 0,
         fov : 55
       }
 
+    } //fov 55
+
+    //init our shineParticles data 
+
+    this.shineParticleValues = {
+      size : 9,
+      sizeAttenuation : true
     }
 
     //texture loader 
@@ -164,26 +178,55 @@ export default class Model {
     this.planet4.position.y = this.dasPositionsJa.planet4.y 
     this.planet4.position.z = this.dasPositionsJa.planet4.z 
 
+
+
+
+
+
     //LIGHTS //IDEA cool camera / light work 
     //the light could change positions during animation to add cool effects 
-    const light = new THREE.PointLight(0xffffff , 2.0)
-    light.position.set(2 , 3 , 1)
-    //light.distance = 100 
+    this.light = new THREE.PointLight(0xffffff , 1.0)
+    this.light.position.set(0 , 0 , 0)//xyz
+    this.light.decay = 2
+    this.light.distance = 100
     
     
-    this.scene.add(light)
+    
+    this.scene.add(this.light)
     
 
+
+
+
+
     //particles     
+
+
+     //add an additional 500 stars 
+    //the white start will go from visible to not 
+
+
     const particleMat = new THREE.PointsMaterial({
-      size : 0.2,
-      sizeAttenuation : true
+      size: 0.4,
+      sizeAttenuation: true
     })
 
 
     //load particle texture & apply it 
     const particleTexture = textureLoader.load("star_04.png")
     particleMat.map = particleTexture
+    particleMat.transparent = true 
+    particleMat.alphaMap = particleTexture
+
+    //SPECIAL PARTICLE 
+    this.shineParticleMaterial = new THREE.PointsMaterial({
+      size: 0.8,
+      sizeAttenuation: true
+      })
+
+    this.shineParticleMaterial.color = new THREE.Color('white')
+
+
     
     //Star colors randomly selected for each star 
     //Colors code was changed from 0-255 to 0.0-1.0 to fit in a float32 array 
@@ -208,7 +251,13 @@ export default class Model {
     
     //Particle geometry is using a custom geometry we create it here 
     this.particleGeo = new THREE.BufferGeometry() //we create our own geo for the particles 
-    this.count = 8000 //this will be the amount of particles 
+    this.count = 8000//this will be the amount of particles 
+
+    //SPECIAL PARTICLES 
+    this.shineParticleGeo = new THREE.BufferGeometry()
+    this.shineCount = 1000 //these starts will shine
+    const shinePositions = new Float32Array(this.shineCount * 3)//same as below they need xyz
+
 
     //BufferGeometry need to be passed a Float32 array containing the xyz values on each vertex
     const positions = new Float32Array(this.count*3) //each particle needs an xyz coord so we get 3 * the amount of particles 
@@ -238,30 +287,42 @@ export default class Model {
       colors[i3] = randomlySelectedRGB[0]
       colors[i3 + 1] = randomlySelectedRGB[1]
       colors[i3 + 2] = randomlySelectedRGB[2]
-       
-
     }
+
+    //loop for our shinning stars 
+    for(let i = 0; i < this.shineCount * 3; i++){
+      let i3 = i * 3
+
+      shinePositions[i3 + 0] = (Math.random()-0.5) * 60//x 
+      shinePositions[i3 + 1] = (Math.random()-0.5) * 60//y 
+      shinePositions[i3 + 2] = (Math.random()-0.5) * 60//z
+    }
+
+    //set the positions of our shining stars on the bufferGeo
+    this.shineParticleGeo.setAttribute('position' , new THREE.BufferAttribute(shinePositions , 3))
+
+
     
     //we set those new positions on our geometry 
     this.particleGeo.setAttribute('position', new THREE.BufferAttribute(positions , 3))
-
     //we set the color on our particle
     this.particleGeo.setAttribute('color' , new THREE.BufferAttribute(colors , 3))
-
     //we activate the vertex colors 
     particleMat.vertexColors = true
 
 
-    //DEPRECATED ...
-    this.colorArr = [...colors]
-    
+  
     
     
     
     //we make our points mesh which are our particles
     this.particles = new THREE.Points(this.particleGeo, particleMat) 
 
+    //we create a second points mesh for our shining stars 
+    //this.shineParticles = new THREE.Points(this.shineParticleGeo , this.shineParticleMaterial)
+
     this.scene.add(this.particles)
+    //this.scene.add(this.shineParticles)
 
 
 
@@ -300,7 +361,7 @@ export default class Model {
 
 
     
-
+    console.log(this.shineParticleMaterial , particleMat)
     
     //Start running the ticker
     this.startTick()
@@ -336,6 +397,15 @@ export default class Model {
   //Our tick function - this block runs on everyframe
   tick = () => {
     
+
+    //this.shineParticleMaterial.size += 0.01 
+    //this.shineParticleMaterial.needsUpdate = true
+    //this.shineParticles.needsUpdate = true
+    //console.log(this.shineParticleMaterial.size)
+    //this.shineParticleGeo.needsUpdate = true
+    
+    
+
 
     //Delta time calculation for animation uniforming  
     let currentTime = Date.now()
@@ -418,34 +488,184 @@ export default class Model {
     console.log(`Change to planet ${planet}`)
 
     //reset the cam back to home since it must go from home always
-    this.camera.position.x = 0
-    this.camera.position.y = 0
+    // this.camera.position.x = 0
+    // this.camera.position.y = 0
 
-    //Basic camera location switching based on which page we are on 
-    if(planet === "ProjectPage"){
-      const cameraTimeline = anime.timeline()
-      cameraTimeline.add({
+    // const cameraTimeline = anime.timeline()
+    //   cameraTimeline.add({
+    //     targets : [this.camera.position],
+    //     x : 0,
+    //     y : 0,
+    //     easing : "easeInOutSine",
+    //     duration : "2000"
+    //   })
+
+    if(planet === "MainPage"){
+
+      const cameraTimelineXY = anime.timeline({
+        easing : "easeInOutSine",
+        duration : "2000"
+      }).add({
         targets : [this.camera.position],
-        x : this.dasPositionsJa.planet2.x,
-        y: this.dasPositionsJa.planet2.y,
+        x : this.dasPositionsJa.planet1.x,
+        y: this.dasPositionsJa.planet1.y,
+        z : [
+          {
+            value : 3.5
+          },
+          {
+            value : 3
+          }
+        ],
+
+       })
+
+      
+       
+
+       const lightTimeLine = anime.timeline()
+       lightTimeLine.add({
+        targets : [this.light.position],
+        x : -4 ,
+        y : -3 ,
+        z : 6 ,
         easing : "easeInOutSine",
         duration : "2000"
       })
-      // this.camera.position.x = this.dasPositionsJa.planet2.x 
-      // this.camera.position.y = this.dasPositionsJa.planet2.y
-      console.log("planet does equal aboutpage")
-      return cameraTimeline.finished
+
+
+
+      return cameraTimelineXY.finished
+    }
+      
+
+    //Basic camera location switching based on which page we are on 
+    if(planet === "ProjectPage"){
+
+      const cameraTimelineXY = anime.timeline({
+        easing : "easeInOutSine",
+        duration : "2000"
+      }).add({
+        targets : [this.camera.position],
+        x : this.dasPositionsJa.planet2.x,
+        y: this.dasPositionsJa.planet2.y,
+        z : [
+          {
+            value : 3.5
+          },
+          {
+            value : 3
+          }
+        ]
+       })
+
+       const lightTimeLine = anime.timeline()
+       lightTimeLine.add({
+        targets : [this.light.position],
+        x : 10 ,
+        y : 2 ,
+        z : 4 ,
+        intensity : [
+          {
+           value : 0
+         },
+         {
+           value : 1.0
+         }
+         ],
+        
+        easing : "easeInOutSine",
+        duration : "2000"
+      })
+
+      return cameraTimelineXY.finished
     }
 
     if(planet === "AboutPage"){
-      this.camera.position.x = this.dasPositionsJa.planet3.x 
-      this.camera.position.y = this.dasPositionsJa.planet3.y
+      const cameraTimeline = anime.timeline()
+      cameraTimeline.add({
+        targets : [this.camera.position],
+        x : this.dasPositionsJa.planet3.x,
+        y: this.dasPositionsJa.planet3.y,
+        z : [
+          {
+            value : 3.5
+          },
+          {
+            value : 3
+          }
+        ],
+        easing : "easeInOutSine",
+        duration : "2000"
+      })
+
+
+      const lightTimeLine = anime.timeline()
+       lightTimeLine.add({
+        targets : [this.light.position],
+        x : 8 ,
+        y :-2 ,
+        z : 4 ,
+        intensity : [
+          {
+           value : 0
+         },
+         {
+           value : 1.0
+         }
+         ],
+        
+        easing : "easeInOutSine",
+        duration : "2000"
+      })
+
+      // this.camera.position.x = this.dasPositionsJa.planet3.x 
+      // this.camera.position.y = this.dasPositionsJa.planet3.y
       console.log("planet does equal aboutpage")
     }
     
     if(planet === "ContactPage"){
-      this.camera.position.x = this.dasPositionsJa.planet4.x
-      this.camera.position.y = this.dasPositionsJa.planet4.y
+
+
+      const cameraTimeline = anime.timeline()
+      cameraTimeline.add({
+        targets : [this.camera.position],
+        x : this.dasPositionsJa.planet4.x,
+        y: this.dasPositionsJa.planet4.y,
+        z : [
+          {
+            value : 3.5
+          },
+          {
+            value : 3
+          }
+        ],
+        easing : "easeInOutSine",
+        duration : "2000"
+      })
+
+      const lightTimeLine = anime.timeline()
+       lightTimeLine.add({
+        targets : [this.light.position],
+        x : 0 ,
+        y : 7 ,
+        z : 1,
+        intensity : [
+         {
+          value : 0
+        },
+        {
+          value : 1.0
+        }
+        ],
+        
+        easing : "easeInOutSine",
+        duration : "2000"
+      })
+
+
+      // this.camera.position.x = this.dasPositionsJa.planet4.x
+      // this.camera.position.y = this.dasPositionsJa.planet4.y
       console.log("planet does equal aboutpage")
     }
 
