@@ -1,8 +1,5 @@
-import React from 'react';
 import * as THREE from 'three';
-import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
-import {FBXLoader} from 'three/examples/jsm/loaders/FBXLoader.js'
-import anime, { timeline } from 'animejs'
+import anime from 'animejs'
 
 
 
@@ -33,6 +30,35 @@ import anime, { timeline } from 'animejs'
 
 
 */
+
+const textureLoader = new THREE.TextureLoader()
+
+class Planet {
+
+  constructor({ x, y, z, texture, bumpMap, bumpScale, geometry, generateMipmaps = false }) {
+
+    // Create Texture
+    const planetTexure = textureLoader.load(texture)
+    planetTexure.generateMipmaps = generateMipmaps
+    planetTexure.minFilter = THREE.NearestFilter
+
+    //we create our planet1 material
+    const materialParams = { map: planetTexure }
+    if (bumpMap) materialParams.bumpMap = textureLoader.load(bumpMap)
+    const material = new THREE.MeshStandardMaterial(materialParams)
+    if (bumpScale) material.bumpScale = bumpScale
+
+    // Create Mesh
+    this.mesh =  new THREE.Mesh(geometry, material)
+
+    // Update Mesh Position
+    Object.assign(this.mesh.position, { x, y ,z })
+
+  }
+
+}
+
+
 export default class Model {
 
   constructor(canvas) {
@@ -119,14 +145,6 @@ export default class Model {
       sizeAttenuation : true
     }
 
-    //texture loader 
-    const textureLoader = new THREE.TextureLoader()
-
-    //GLTFF loader 
-    const gltfLoader = new GLTFLoader()
-    const fbxLoader = new FBXLoader()
-    
-
     //Create the scene 
     this.scene = new THREE.Scene()
 
@@ -135,74 +153,51 @@ export default class Model {
 
     //Planet default Geometry
     const geometry = new THREE.SphereGeometry(1, 32, 32) //we create our sphere geometry we will reuse this 
-    
 
-    //planet 1 code 
-    const planet1Textures = textureLoader.load("2k_haumea_fictional.jpeg")
-    planet1Textures.generateMipmaps = false
-    planet1Textures.minFilter = THREE.NearestFilter
-    const material1 = new THREE.MeshStandardMaterial({ map: planet1Textures })//we create our planet1 material
-    this.planet1 = new THREE.Mesh(geometry, material1)//we combine the two to make our cube mesh
-    this.scene.add(this.planet1)//we then add it to our scene 
-    this.planet1.position.x = this.dasPositionsJa.planet1.x 
-    this.planet1.position.y = this.dasPositionsJa.planet1.y 
-    this.planet1.position.z = this.dasPositionsJa.planet1.z 
 
-    //planet 2 code //TEST MARS 
-    const planet2TextureColors = textureLoader.load("MarsColorMap.jpg")
-    const planet2TextureBump = textureLoader.load("MarsBumpMap.png")
-    planet2TextureColors.generateMipmaps = false
-    planet2TextureColors.minFilter = THREE.NearestFilter
-    const material2  = new THREE.MeshStandardMaterial({
-       map: planet2TextureColors,
-       bumpMap :  planet2TextureBump
-      })
-    material2.bumpScale = 0.09
-    this.planet2 = new THREE.Mesh(geometry, material2)
+    const { planet1, planet2, planet3, planet4 } = this.dasPositionsJa
+
+    this.planet1 = new Planet({
+      texture: "2k_haumea_fictional.jpeg",
+      geometry,
+      ...planet1
+    }).mesh
+
+    this.planet2 = new Planet({
+      texture: "MarsColorMap.jpg",
+      bumpMap: "MarsBumpMap.png",
+      bumpScale: 0.09,
+      geometry,
+      ...planet2
+    }).mesh
+
+    this.planet3 = new Planet({
+      texture: "venusmap.jpg",
+      bumpMap: "venusbump.jpg",
+      bumpScale: 0.04,
+      geometry,
+      ...planet3
+    }).mesh
+
+    this.planet4 = new Planet({
+      texture: "aboutplanetcolor.jpeg",
+      bumpMap: "aboutplanetbump.jpeg",
+      bumpScale: 0.04,
+      geometry,
+      ...planet4
+    }).mesh
+
+    // Add Planets to scene
+    this.scene.add(this.planet1)
     this.scene.add(this.planet2)
-    this.planet2.position.x = this.dasPositionsJa.planet2.x 
-    this.planet2.position.y = this.dasPositionsJa.planet2.y 
-    this.planet2.position.z = this.dasPositionsJa.planet2.z 
-
-    //planet 3 code 
-    const planet3Textures = textureLoader.load("venusmap.jpg")
-    const planet3TextureBump = textureLoader.load('venusbump.jpg')
-    planet3Textures.generateMipmaps = false
-    planet3Textures.minFilter = THREE.NearestFilter
-    const material3 = new THREE.MeshStandardMaterial({
-       map: planet3Textures,
-       bumpMap : planet3TextureBump 
-      })
-    material3.color = new THREE.Color('#abebed')
-    material3.bumpScale = 0.04
-    this.planet3 = new THREE.Mesh(geometry, material3)
     this.scene.add(this.planet3)
-    this.planet3.position.x = this.dasPositionsJa.planet3.x 
-    this.planet3.position.y = this.dasPositionsJa.planet3.y 
-    this.planet3.position.z = this.dasPositionsJa.planet3.z 
-
-    //planet 4 code 
-    const planet4Textures = textureLoader.load("aboutplanetcolor.jpeg")
-    const planet4TextureBump = textureLoader.load('aboutplanetbump.jpeg')
-    const material4 = new THREE.MeshStandardMaterial({
-       map: planet4Textures,
-       bumpMap : planet4TextureBump
-       })
-    material4.bumpScale = 0.04
-    this.planet4 = new THREE.Mesh(geometry, material4)
     this.scene.add(this.planet4)
-    this.planet4.position.x = this.dasPositionsJa.planet4.x 
-    this.planet4.position.y = this.dasPositionsJa.planet4.y 
-    this.planet4.position.z = this.dasPositionsJa.planet4.z 
-
-
-
 
 
 
     //LIGHTS //IDEA cool camera / light work 
     //the light could change positions during animation to add cool effects 
-    this.light = new THREE.PointLight(0xffffff , 0.0)
+    this.light = new THREE.PointLight(0xffffff , 1.0)
     this.light.position.set(0 , 0 , 0)//xyz
     this.light.decay = 2
     this.light.distance = 100
@@ -211,10 +206,6 @@ export default class Model {
     
     this.scene.add(this.light)
     
-
-
-
-
 
     //particles     
 
@@ -345,7 +336,7 @@ export default class Model {
 
     
     //Create a Perspective Camera
-    this.camera = new THREE.PerspectiveCamera(this.dasPositionsJa.camera.fov , this.sizes.width / this.sizes.height , 1 , 1000)
+    this.camera = new THREE.PerspectiveCamera(this.dasPositionsJa.camera.fov , this.sizes.aspectRatio , 1 , 1000)
     //param are fov , aspect ratio , near & far frustum 
 
     //We set our Camera's position based on our position's object instanciated earlier
@@ -376,7 +367,12 @@ export default class Model {
 
 
     //Add Event Listener to handle sreen resize
-    window.addEventListener("resize", () => this.setSizes())
+    window.addEventListener("resize", () => {
+      this.setSizes()
+      this.renderer.setSize(this.sizes.width, this.sizes.height)
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+      this.camera.aspect = this.sizes.aspectRatio
+    })
 
 
     
@@ -385,8 +381,8 @@ export default class Model {
     //Start running the ticker
     this.startTick()
 
-
-    this.changePlanet('MainPage')
+    // Run Intro Animation
+    this.launchPlanet()
 
     //Return class instance for chaining
     return this
@@ -472,9 +468,10 @@ export default class Model {
     this.sizes = {
       height: window.innerHeight,
       width: window.innerWidth,
-      apectRatio : window.innerWidth / window.innerHeight 
+      aspectRatio : window.innerWidth / window.innerHeight 
     }
 
+    
     //this.renderer.setPixelRatio(Math.min(window.devicePixelRatio , 2))
   }
 
@@ -506,166 +503,99 @@ export default class Model {
 
   //Camera animation launcher - this will take in parameters from the react app and apply an animation based on 
   //the values received.
-  changePlanet(planet) {
+  changePlanet(planet, duration = 2000) {
 
-    //potentially will add animation framework logic here to run an animation 
-
-    console.log(`Change to planet ${planet}`)
-
-    const timeLine = anime.timeline({
-      easing : "easeInOutSine",
-      duration : "2000"
+    // Create timeline with defaults
+    const timeline = anime.timeline({
+      easing: "easeInOutCubic",
+      duration
     })
- 
 
-    if(planet === "MainPage"){
+    // Set some default values for the
+    let positions = this.dasPositionsJa.planet1
+    let lighting = { x: -4,  y: -3, z: 6 }
 
-      timeLine.add({
-        easing : "easeInOutSine",
-        targets : [this.camera.position],
-        x : this.dasPositionsJa.planet1.x,
-        y: this.dasPositionsJa.planet1.y,
-        z : [
-          {
-            value : 3.5
-          },
-          {
-            value : 3
-          }
-        ],
+    // Get planet position
+    switch (planet) {
+      case "ProjectPage":
+        positions = this.dasPositionsJa.planet2
+        lighting = { x: 10,  y: 2, z: 4 }
+        break
 
-       }).add({
-        targets : [this.light.position],
-        x : -4 ,
-        y : -3 ,
-        z : 6 ,
-        
-      },'-=2000').add({
-        targets : [this.light],
-        intensity : [
-          {
-            value : 0
-          },
-          {
-            value : 1
-          }
-        ]
-      },'-=2000')
+      case "AboutPage":
+        positions = this.dasPositionsJa.planet3
+        lighting = { x: 8,  y: -2, z: 4 }
+        break
 
-    }
-      
-
-    //Basic camera location switching based on which page we are on 
-    if(planet === "ProjectPage"){
-
-     timeLine.add({
-        targets : [this.camera.position],
-        x : this.dasPositionsJa.planet2.x,
-        y: this.dasPositionsJa.planet2.y,
-        z : [
-          {
-            value : 3.5
-          },
-          {
-            value : 3
-          }
-        ]
-       })
-
-       timeLine.add({
-        targets : [this.light.position],
-        x : 10 ,
-        y : 2 ,
-        z : 4 ,
-        intensity : [
-          {
-           value : 0
-         },
-         {
-           value : 1.0
-         }
-         ],
-        
-        easing : "easeInOutSine",
-        duration : "2000"
-      })
-
+      case "ContactPage":
+        positions = this.dasPositionsJa.planet4
+        lighting = { x: -5,  y: 7, z: 1 }
+        break
     }
 
-    if(planet === "AboutPage"){
-      timeLine.add({
-        targets : [this.camera.position],
-        x : this.dasPositionsJa.planet3.x,
-        y: this.dasPositionsJa.planet3.y,
-        z : [
-          {
-            value : 3.5
-          },
-          {
-            value : 3
-          }
-        ],
-        easing : "easeInOutSine",
-        duration : "2000"
-      })
+    // Animate Planet Position
+    timeline.add({
+      targets: [this.camera.position],
+      x: positions.x,
+      y: positions.y,
+      z: [3, 3.5, 3],
+      easing: "easeInOutCirc"
+    })
+
+    // Animate Lighting Position
+    timeline.add({
+      targets: [this.light.position],
+      ...lighting
+    }, `-=${duration}`)
+
+    // Animate Light Intensity
+    timeline.add({
+      targets: [this.light],
+      intensity: [1, 0, 1],
+      easing: "easeInOutCirc"
+    }, `-=${duration}`)
+
+    // Return Promise
+    return timeline.finished
+
+  }
+
+  launchPlanet(duration = 2000) {
 
 
-      timeLine.add({
-        targets : [this.light.position],
-        x : 8 ,
-        y :-2 ,
-        z : 4 ,
-        intensity : [0 , 1],
-        easing : "easeInOutSine",
-        duration : "2000"
-      })
-    }
-    
-    if(planet === "ContactPage"){
+    // Create timeline with defaults
+    const timeline = anime.timeline({
+      easing: "easeOutQuad",
+      duration
+    })
 
+    // Set some default values for the
+    let positions = this.dasPositionsJa.planet1
 
-      timeLine.add({
-        targets : [this.camera.position],
-        x : this.dasPositionsJa.planet4.x,
-        y: this.dasPositionsJa.planet4.y,
-        z : [
-          {
-            value : 3.5
-          },
-          {
-            value : 3
-          }
-        ],
-        easing : "easeInOutSine",
-        duration : "2000"
-      })
+    // Animate Planet Position
+    timeline.add({
+      targets: [this.camera.position],
+      x: positions.x,
+      y: positions.y,
+      z: [10, 3]
+    })
 
-      timeLine.add({
-        targets : [this.light.position],
-        x : 0 ,
-        y : 7 ,
-        z : 1,
-        intensity : [
-         {
-          value : 0
-        },
-        {
-          value : 1.0
-        }
-        ],
-        
-        easing : "easeInOutSine",
-        duration : "2000"
-      }, "-=2000")
+    // Animate Lighting Position
+    timeline.add({
+      targets: [this.light.position],
+      x: -4,
+      y: -3,
+      z: 6,
+    }, `-=${duration}`)
 
+    // Animate Light Intensity
+    timeline.add({
+      targets: [this.light],
+      intensity: [0, 1],
+    }, `-=${duration / 3}`)
 
-      // this.camera.position.x = this.dasPositionsJa.planet4.x
-      // this.camera.position.y = this.dasPositionsJa.planet4.y
-      console.log("planet does equal aboutpage")
-
-      return timeLine.finished
-    }
-
+    // Return Promise
+    return timeline.finished
 
   }
 

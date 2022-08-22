@@ -44,7 +44,17 @@ main{
 //     width: 100%;
 // }
 
-.ringu{
+.ringu {
+    --ring-size: 125vh;
+    position: absolute;
+    animation: rotate 200s linear infinite;
+    object-fit: contain;
+    height: var(--ring-size);
+    width: var(--ring-size);
+    z-index: -1;
+}
+
+.ringu-s {
     position: absolute;
     animation: rotate 200s linear ;
     object-fit: contain;
