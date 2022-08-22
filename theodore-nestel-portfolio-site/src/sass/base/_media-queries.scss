@@ -29,7 +29,7 @@
 };
 
 @mixin sideways-blet{
-    @media screen and(max-width: 75em){ //1200px
+    @media screen and (max-width: 75em){ //1200px
         @content
     }
 };

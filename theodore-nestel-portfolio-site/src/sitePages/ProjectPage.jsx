@@ -5,6 +5,7 @@ import projectData from "../data/projects.json"
 import Card from "../components/Card"
 import useClickOut from "../utility/useClickOut";
 import anime from "animejs";
+import { useExit } from "../utility/useAnimation";
 
 const bem = bemify2("page")
 
@@ -109,6 +110,11 @@ function ProjectPage(props) {
         animateCard("in")
 
     }, [selectedProject]) 
+
+    // We'll need to add an exit functino
+    // useExit("page", () => {
+
+    // })
 
     return (
         <div className={bem()}>
