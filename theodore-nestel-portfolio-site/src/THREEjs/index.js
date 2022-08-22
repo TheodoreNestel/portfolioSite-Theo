@@ -1,35 +1,36 @@
 import * as THREE from 'three';
-import {useEffect} from "react"
+import {useEffect , useState} from "react"
 import Model from './Model';
-
 // Store Model Instance in Module Scope
-let model
+
 
 export const useTHREE = (ref) => {
-
+  const [model , setModel] = useState()
+  
   useEffect(() => {
     if(!ref.current) return
     // Initialize New Model or Update Existing Model
-    if (!model) model = new Model(ref.current).init()
+    if (!model) setModel(new Model(ref.current).init())
     else model.update(ref.current)
 
     // Just stop the tick in case
-    return () => model.stopTick()
+    return () => model?.stopTick()
 
-  }, [ref.current])
-
+  }, [ref.current , model])
+  return model
 }
 
-export function useTransition(planet){
+// export function useTransition(planet){
 
-  useEffect(() => {
+//   useEffect(() => {
 
-    if (!model || !planet) return
+//     if (!model || !planet) return
 
-    // Just an example of how we can call a method from our model
-    model.changePlanet(planet)
+//     // Just an example of how we can call a method from our model
+//     model.changePlanet(planet)
     
 
-  }, [planet]) 
+//   }, [planet]) 
 
-}
+// }
+

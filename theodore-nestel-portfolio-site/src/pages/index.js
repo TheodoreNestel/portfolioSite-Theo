@@ -38,7 +38,8 @@ const IndexPage = () => {
   const Page = pages[page]; //this takes whatever page the useSate is holding and grabs the page object accordingly
   
   //THREEJS CAM ANIMATION CODE 
-  useTransition(page)
+  //useTransition(page)
+  
   
 
  

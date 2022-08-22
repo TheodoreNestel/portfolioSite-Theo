@@ -89,24 +89,24 @@ export default class Model {
         z : 0
       },
       planet2 : {
-        x : 5,
+        x : 15,
         y : 0, 
         z : 0
       },
       planet3 : {
         x : 0,
-        y : 5, 
+        y : 15, 
         z : 0
       },
       planet4 : {
-        x : -5,
+        x : -15,
         y : 0, 
         z : 0
       },
       camera : {
         x : 0 , 
         y : 0 , 
-        z : 0,
+        z : 3,
         fov : 55
       }
 
@@ -151,6 +151,8 @@ export default class Model {
     //planet 2 code //TEST MARS 
     const planet2TextureColors = textureLoader.load("MarsColorMap.jpg")
     const planet2TextureBump = textureLoader.load("MarsBumpMap.png")
+    planet2TextureColors.generateMipmaps = false
+    planet2TextureColors.minFilter = THREE.NearestFilter
     const material2  = new THREE.MeshStandardMaterial({
        map: planet2TextureColors,
        bumpMap :  planet2TextureBump
@@ -163,7 +165,16 @@ export default class Model {
     this.planet2.position.z = this.dasPositionsJa.planet2.z 
 
     //planet 3 code 
-    const material3 = new THREE.MeshStandardMaterial({ color: 'green' })
+    const planet3Textures = textureLoader.load("venusmap.jpg")
+    const planet3TextureBump = textureLoader.load('venusbump.jpg')
+    planet3Textures.generateMipmaps = false
+    planet3Textures.minFilter = THREE.NearestFilter
+    const material3 = new THREE.MeshStandardMaterial({
+       map: planet3Textures,
+       bumpMap : planet3TextureBump 
+      })
+    material3.color = new THREE.Color('#abebed')
+    material3.bumpScale = 0.04
     this.planet3 = new THREE.Mesh(geometry, material3)
     this.scene.add(this.planet3)
     this.planet3.position.x = this.dasPositionsJa.planet3.x 
@@ -171,7 +182,13 @@ export default class Model {
     this.planet3.position.z = this.dasPositionsJa.planet3.z 
 
     //planet 4 code 
-    const material4 = new THREE.MeshStandardMaterial({ color: 'purple' })
+    const planet4Textures = textureLoader.load("aboutplanetcolor.jpeg")
+    const planet4TextureBump = textureLoader.load('aboutplanetbump.jpeg')
+    const material4 = new THREE.MeshStandardMaterial({
+       map: planet4Textures,
+       bumpMap : planet4TextureBump
+       })
+    material4.bumpScale = 0.04
     this.planet4 = new THREE.Mesh(geometry, material4)
     this.scene.add(this.planet4)
     this.planet4.position.x = this.dasPositionsJa.planet4.x 
@@ -185,7 +202,7 @@ export default class Model {
 
     //LIGHTS //IDEA cool camera / light work 
     //the light could change positions during animation to add cool effects 
-    this.light = new THREE.PointLight(0xffffff , 1.0)
+    this.light = new THREE.PointLight(0xffffff , 0.0)
     this.light.position.set(0 , 0 , 0)//xyz
     this.light.decay = 2
     this.light.distance = 100
@@ -336,6 +353,8 @@ export default class Model {
     this.camera.position.x = this.dasPositionsJa.camera.x
     this.camera.position.y = this.dasPositionsJa.camera.y
 
+    this.camera.focus = 1.4;
+
     //the Camera is then added to the scene
     this.scene.add(this.camera)
 
@@ -365,6 +384,9 @@ export default class Model {
     
     //Start running the ticker
     this.startTick()
+
+
+    this.changePlanet('MainPage')
 
     //Return class instance for chaining
     return this
@@ -416,6 +438,9 @@ export default class Model {
     //PLANET ROTATIONS 
     this.planet1.rotation.y += 0.0001 * deltaTime
     this.planet2.rotation.x += 0.0001 * deltaTime
+    this.planet3.rotation.x -= 0.0001 * deltaTime
+    this.planet4.rotation.z -= 0.0001 * deltaTime
+    this.planet4.rotation.y -= 0.0001 * deltaTime
     
     //CAMERA MOVEMENT we update our camera
     this.camera.updateProjectionMatrix();
@@ -487,25 +512,16 @@ export default class Model {
 
     console.log(`Change to planet ${planet}`)
 
-    //reset the cam back to home since it must go from home always
-    // this.camera.position.x = 0
-    // this.camera.position.y = 0
-
-    // const cameraTimeline = anime.timeline()
-    //   cameraTimeline.add({
-    //     targets : [this.camera.position],
-    //     x : 0,
-    //     y : 0,
-    //     easing : "easeInOutSine",
-    //     duration : "2000"
-    //   })
+    const timeLine = anime.timeline({
+      easing : "easeInOutSine",
+      duration : "2000"
+    })
+ 
 
     if(planet === "MainPage"){
 
-      const cameraTimelineXY = anime.timeline({
+      timeLine.add({
         easing : "easeInOutSine",
-        duration : "2000"
-      }).add({
         targets : [this.camera.position],
         x : this.dasPositionsJa.planet1.x,
         y: this.dasPositionsJa.planet1.y,
@@ -518,34 +534,31 @@ export default class Model {
           }
         ],
 
-       })
-
-      
-       
-
-       const lightTimeLine = anime.timeline()
-       lightTimeLine.add({
+       }).add({
         targets : [this.light.position],
         x : -4 ,
         y : -3 ,
         z : 6 ,
-        easing : "easeInOutSine",
-        duration : "2000"
-      })
+        
+      },'-=2000').add({
+        targets : [this.light],
+        intensity : [
+          {
+            value : 0
+          },
+          {
+            value : 1
+          }
+        ]
+      },'-=2000')
 
-
-
-      return cameraTimelineXY.finished
     }
       
 
     //Basic camera location switching based on which page we are on 
     if(planet === "ProjectPage"){
 
-      const cameraTimelineXY = anime.timeline({
-        easing : "easeInOutSine",
-        duration : "2000"
-      }).add({
+     timeLine.add({
         targets : [this.camera.position],
         x : this.dasPositionsJa.planet2.x,
         y: this.dasPositionsJa.planet2.y,
@@ -559,8 +572,7 @@ export default class Model {
         ]
        })
 
-       const lightTimeLine = anime.timeline()
-       lightTimeLine.add({
+       timeLine.add({
         targets : [this.light.position],
         x : 10 ,
         y : 2 ,
@@ -578,12 +590,10 @@ export default class Model {
         duration : "2000"
       })
 
-      return cameraTimelineXY.finished
     }
 
     if(planet === "AboutPage"){
-      const cameraTimeline = anime.timeline()
-      cameraTimeline.add({
+      timeLine.add({
         targets : [this.camera.position],
         x : this.dasPositionsJa.planet3.x,
         y: this.dasPositionsJa.planet3.y,
@@ -600,35 +610,21 @@ export default class Model {
       })
 
 
-      const lightTimeLine = anime.timeline()
-       lightTimeLine.add({
+      timeLine.add({
         targets : [this.light.position],
         x : 8 ,
         y :-2 ,
         z : 4 ,
-        intensity : [
-          {
-           value : 0
-         },
-         {
-           value : 1.0
-         }
-         ],
-        
+        intensity : [0 , 1],
         easing : "easeInOutSine",
         duration : "2000"
       })
-
-      // this.camera.position.x = this.dasPositionsJa.planet3.x 
-      // this.camera.position.y = this.dasPositionsJa.planet3.y
-      console.log("planet does equal aboutpage")
     }
     
     if(planet === "ContactPage"){
 
 
-      const cameraTimeline = anime.timeline()
-      cameraTimeline.add({
+      timeLine.add({
         targets : [this.camera.position],
         x : this.dasPositionsJa.planet4.x,
         y: this.dasPositionsJa.planet4.y,
@@ -644,8 +640,7 @@ export default class Model {
         duration : "2000"
       })
 
-      const lightTimeLine = anime.timeline()
-       lightTimeLine.add({
+      timeLine.add({
         targets : [this.light.position],
         x : 0 ,
         y : 7 ,
@@ -661,12 +656,14 @@ export default class Model {
         
         easing : "easeInOutSine",
         duration : "2000"
-      })
+      }, "-=2000")
 
 
       // this.camera.position.x = this.dasPositionsJa.planet4.x
       // this.camera.position.y = this.dasPositionsJa.planet4.y
       console.log("planet does equal aboutpage")
+
+      return timeLine.finished
     }
 
 

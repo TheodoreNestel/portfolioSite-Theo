@@ -15,68 +15,65 @@ function AboutPage(){
     
     const container = useRef();
 
-    useEnter(()=>{
+    // useEnter(()=>{
 
 
-    const card = container.current.querySelector(".card")
-    const content = card.querySelectorAll(".card__title, .card__content > p, .card__links > li")
+    // const card = container.current.querySelector(".card")
+    // const content = card.querySelectorAll(".card__title, .card__content > p, .card__links > li")
     
         
-                anime.timeline({
-                easing: "easeOutCubic",
-                duration: 500
-            })
-            .add({
-                targets: card,
-                opacity: [0, 1],
-                scale: [0.7, 1],
-                duration: 400
-            })
-            .add({
-                targets: content,
-                opacity: [0, 1],
-                translateY: [anime.stagger(50, {direction: 'reverse'}), 0],
-                delay: anime.stagger(150),
-                duration: 200
-            })
+    //             anime.timeline({
+    //             easing: "easeOutCubic",
+    //             duration: 500
+    //         })
+    //         .add({
+    //             targets: card,
+    //             opacity: [0, 1],
+    //             scale: [0.7, 1],
+    //             duration: 400
+    //         })
+    //         .add({
+    //             targets: content,
+    //             opacity: [0, 1],
+    //             translateY: [anime.stagger(50, {direction: 'reverse'}), 0],
+    //             delay: anime.stagger(150),
+    //             duration: 200
+    //         })
            
-    })
+    // })
 
-    useExit("page",()=>{
+    // useExit("page",()=>{
 
-        const card = container.current.querySelector(".card")
-        const content = card.querySelectorAll(".card__title, .card__content > p, .card__links > li")
+    //     const card = container.current.querySelector(".card")
+    //     const content = card.querySelectorAll(".card__title, .card__content > p, .card__links > li")
         
             
-                  const timeLine = anime.timeline({
-                    easing: "easeOutCubic",
-                    duration: 500,
-                    autoplay : false
-                })
-                .add({
-                    targets: content,
-                    opacity: 0,
-                    translateY: [anime.stagger(50), 0],
-                    delay: anime.stagger(150),
-                    duration: 200
-                })
-                .add({
-                    targets: card,
-                    opacity: 0,
-                    scale: 0.7,
-                    duration: 400
-                })
+    //               const timeLine = anime.timeline({
+    //                 easing: "easeOutCubic",
+    //                 duration: 500,
+    //                 autoplay : false
+    //             })
+    //             .add({
+    //                 targets: content,
+    //                 opacity: 0,
+    //                 translateY: [anime.stagger(50), 0],
+    //                 delay: anime.stagger(150),
+    //                 duration: 200
+    //             })
+    //             .add({
+    //                 targets: card,
+    //                 opacity: 0,
+    //                 scale: 0.7,
+    //                 duration: 400
+    //             })
                 
 
                 
-                timeLine.play();
+    //             timeLine.play();
 
-                return timeLine.finished
-    })
+    //             return timeLine.finished
+    // })
 
-    useExit('space',"moveToPlanetAbout")
-
-    //clean up dupe code dummy
 
     return (
 

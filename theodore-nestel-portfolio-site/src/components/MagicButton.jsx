@@ -111,7 +111,7 @@ function MagicButton(props) {
                         key={pageNav}
                         className={bem(pageNav)}
                         onClick={async () => {
-                            //await animation?.space()
+                            await animation?.space(pageNav)
                             await animation?.page()
                             props.changePage(pageNav)
                             
