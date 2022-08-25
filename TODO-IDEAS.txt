@@ -86,3 +86,31 @@ REVAMP AUGUST 2022
     -render sphere/plantes 
     -find a way to move camera in a non throw up way 
     -
+
+
+
+
+TODO FINALE: 
+    -Change jsx files so each card can be styled separatly 
+        -have arjun give me a tour of the sass as I am getting very lost in the mess
+
+    -Add exit anims for all pages ::TUESDAY (just needed for linkOrbs will need arjun Xp)
+
+    -UI DESIGN / IMPLEMENTATION - W/Arjun ::WEDNESDAY
+    -Update LinkOrb design / attached card  - W/Arjun ::WEDNESDAY
+
+    -Mobile compatability ** :: THURSDAY / FRIDAY 
+
+
+
+
+TODO with arjun 
+
+-clean up entry / exit animatons 
+    -Ring spin animation is haunted 
+
+-Clean up card & linkOrb css / edit jsx to make styling possible 
+
+-Design / create / implement new nav ui 
+
+-Explain / help with mobile / other screen css formating 

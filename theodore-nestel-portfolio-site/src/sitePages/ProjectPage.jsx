@@ -24,7 +24,7 @@ function ProjectPage(props) {
     // Handle State to control the card
     const [selectedProject, setSelectedProject] = useState()
 
-    // Handle Animation
+    // Handle Animation inside the component (when clicking a LinkOrb)
     const animateCard = async (direction) => {
 
         // If animation is already running, do nothing
@@ -86,13 +86,14 @@ function ProjectPage(props) {
         isAnimating.current = false
     }
 
-    // Handle Card Exit
+    // Handle Card Exit (when clicking something that isnt the current card / linkOrb)
+    //this is a helper function and uses a useEffect hook to trigger itself 
     useClickOut(".card , .linkorb", async () => {
 
         // If an animation is running then dont do anything
         if (isAnimating.current || !selectedProject) return;
 
-        // Wait for animation to complete
+        //call and Wait for animation to complete
         await animateCard("out")
 
         // Finally after the animation is complete, update state to remove the card
@@ -100,7 +101,7 @@ function ProjectPage(props) {
 
     }, [selectedProject])
 
-    // Handle Card Enter with useLayoutEffect
+    // Handle Card Enter with useLayoutEffect // this uses the onClick below to trigger 
     useLayoutEffect(() => {
 
         // If nothing is selected, return
@@ -111,11 +112,10 @@ function ProjectPage(props) {
 
     }, [selectedProject]) 
 
-    // We'll need to add an exit functino
-    // useExit("page", () => {
 
-    // })
 
+    //return a div with the linkOrbs with their designated favicon and the onClick call back funtion
+    //if Selected Project is instanciated and contains data place it inside a Card component 
     return (
         <div className={bem()}>
             <div style={{

@@ -5,9 +5,9 @@ import anime, { timeline } from "animejs";
 import { useTransition } from "../THREEjs";
 
 const bem = bemify2("magicButton")
-//this will take a string pased on one of our pages and from there know what possible directions a use can take
 
-//all possible directions based on the current page 
+
+//based on currentPage string we return an array of possible pages to navigate to 
 const pageDirection = {
     MainPage: ["ContactPage", "AboutPage", "ProjectPage"],
     ContactPage: ["MainPage"],
@@ -24,74 +24,17 @@ const cleanPageNames = {
 }
 
 
-//need to style this to look pretty but working nav lets go 
+//returns our nav and the animations attached to it
 function MagicButton(props) {
 
-    const isAnimating = useRef(false);
-
-
-    ///////////////////////test code////////////////////////////
-
-    //DEPRECATED 
-
-    //state to keep track of our onHover event listener 
-    const [hovered, setHovered] = useState(false);
-
-
-
-    //the function that runs our nav animation 
-    async function animateNav() { //this will need to be async so that we can await the anim's completion 
-
-        if (hovered) return //if we already hovered dont run this 
-        //if we are in anim return 
-
-        if (isAnimating.current) return
-        //we are animating so iz true 
-        isAnimating.current = true
-
-        //the animation logic 
-        let testTimeline = anime.timeline({
-            easing: "easeOutCubic",
-            duration: 500,
-            autoplay: false
-        }).add({
-            targets: ".preButtonTitle",
-            opacity: [1, 0],
-            scale: 2,
-            duration: 600
-        }).add({
-            targets: ".magicButton",
-            backgroundColor: "rgba(113, 113, 134, 0.56)",
-            duration: 500
-        }).add({
-            targets: ".magicButton > button",
-            opacity: [0, 1],
-            duration: 300
-        })
-
-        //we set up our animation so lets play them 
-        testTimeline.play();
-
-
-        //the await call so our code doesnt do anything until our animations are done 
-        await testTimeline.finished;
-        //we got a hover the animation played so now this remains true 
-        setHovered(true);
-        isAnimating.current = false;
-
-        ///DEPRECATED ^ 
-    }
-
     
-
-
     let currentOptions = pageDirection[props.currentPage] //this sets up our current nav options
     //by setting currentPage to an array of all possible pages you can navigate to from it  
 
 
     //this is the code that jebaits react into runing a final animation before unmounting the last component
     const animation = useAnimation(); //this uses closures to remember what the exit anim we set on the last page
-
+    //useAnimations will have the animation logic stored inside it we then call it below inside an Onclick 
 
 
     return (
@@ -111,6 +54,7 @@ function MagicButton(props) {
                         key={pageNav}
                         className={bem(pageNav)}
                         onClick={async () => {
+                            animation.ringu()
                             await animation?.page()
                             await animation?.space(pageNav)
                             props.changePage(pageNav)

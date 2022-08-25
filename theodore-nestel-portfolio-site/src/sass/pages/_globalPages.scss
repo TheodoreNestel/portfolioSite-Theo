@@ -6,11 +6,13 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-
+    //background-color: cyan;
+    
     
     //The code that sizes the contents inside page
     &__container{
         
+       
         max-width: 96rem;
         width: 100%; //this makes smaller boxes with less content still stretch weird 
 
@@ -18,6 +20,7 @@
         &--mainTitle{ //I assume this style my name's position
             height: 45vh;
         }
+        
 
     }
 

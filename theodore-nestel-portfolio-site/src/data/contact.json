@@ -1,20 +1,20 @@
 {
     "title" : "Contact me",
-    "data" : "Here are some ways to contact me.",
+    "data" : "I'd love to be in touch. Below are some useful links to contact me as well as my CV.",
     "links" : [
         {
-            "link": "link1",
-            "icon": "github",
+            "link": "mailto: nestelTheodoreUs@gmail.com",
+            "icon": "mail",
             "title": "sampleTitle1"
         },
         {
-            "link": "link2",
-            "icon": "github",
+            "link": "https://www.linkedin.com/in/theodorenestel/",
+            "icon": "linkedIn",
             "title": "sampleTitle2"
         },
         {
-            "link": "link3",
-            "icon": "github",
+            "link": "/Theodore_Resume_3.pdf",
+            "icon": "resume",
             "title": "sampleTitle3"
         }
     ]

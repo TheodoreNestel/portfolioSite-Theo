@@ -6,7 +6,7 @@ const bem = bemify2("card");
 
 
 //this card component is one of the basic building block its purpose is to display a title and some text data 
-
+//this is the component that holds all text data from the websitePages 
 const Card = (props) => { 
 
 

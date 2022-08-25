@@ -8,8 +8,6 @@ import anime, { timeline } from "animejs";
 
 const bem = bemify2("page");
 
-//I dont think this needs more than this I could be wrong **
-
 
 function ContactPage(props){
 

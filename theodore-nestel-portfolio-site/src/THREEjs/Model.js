@@ -3,38 +3,14 @@ import anime from 'animejs'
 
 
 
-
-/* 3d Scene Explanation 
-  our entire scene will be 15 units long and 15 units wide making a 9x9 box 
-[x x x x x x x x x x x x x x x]
-[x x x x x x x x x x x x x x x]
-[x x x x x x x @ x x x x x x x]
-[x x x x x x x x x x x x x x x]
-[x x x x x x x x x x x x x x x]
-[x x x x x x x x x x x x x x x]
-[x x x x x x x x x x x x x x x]
-[x x @ x x x x @ x x x x @ x x]
-[x x x x x x x x x x x x x x x]
-[x x x x x x x x x x x x x x x]
-[x x x x x x x x x x x x x x x]
-[x x x x x x x x x x x x x x x]
-[x x x x x x x @ x x x x x x x]
-[x x x x x x x x x x x x x x x]
-[x x x x x x x x x x x x x x x]
-
-
-  each character above in 1 unit of space 
-  the Xs represent the space around the planet that will be visible 
-  the @ represent the planets themselves
-  
-
-
-*/
-
+// THREE texture loader to load our planet textures 
 const textureLoader = new THREE.TextureLoader()
 
+
+// Planet class to remove duplicate code 
 class Planet {
 
+  //Constuctor takes all params to generate a planet and place it into our scene
   constructor({ x, y, z, texture, bumpMap, bumpScale, geometry, generateMipmaps = false }) {
 
     // Create Texture
@@ -78,12 +54,8 @@ export default class Model {
     this.particles = undefined
     this.shineParticles = undefined
     this.particleGeo = undefined
-    this.shineParticleGeo = undefined
-    this.shineParticleMaterial = undefined
     this.colorArr =  new Float32Array()
     this.count = undefined
-    this.shineCount = undefined
-    this.shineParticleValues = {}
     //lights
     this.light = undefined
     //Misc vars
@@ -136,27 +108,23 @@ export default class Model {
         fov : 55
       }
 
-    } //fov 55
+    } //fov should remain 55 !
 
-    //init our shineParticles data 
-
-    this.shineParticleValues = {
-      size : 9,
-      sizeAttenuation : true
-    }
-
+  
     //Create the scene 
     this.scene = new THREE.Scene()
 
 
-    //OBJECTS 
 
+    //OBJECTS 
     //Planet default Geometry
     const geometry = new THREE.SphereGeometry(1, 32, 32) //we create our sphere geometry we will reuse this 
 
 
-    const { planet1, planet2, planet3, planet4 } = this.dasPositionsJa
+    const { planet1, planet2, planet3, planet4 } = this.dasPositionsJa // ARJUN**
+    //i think this just assignes planets the values stores in dasPositionsJa
 
+    //create planets 
     this.planet1 = new Planet({
       texture: "2k_haumea_fictional.jpeg",
       geometry,
@@ -195,8 +163,7 @@ export default class Model {
 
 
 
-    //LIGHTS //IDEA cool camera / light work 
-    //the light could change positions during animation to add cool effects 
+    //LIGHTS
     this.light = new THREE.PointLight(0xffffff , 1.0)
     this.light.position.set(0 , 0 , 0)//xyz
     this.light.decay = 2
@@ -209,11 +176,6 @@ export default class Model {
 
     //particles     
 
-
-     //add an additional 500 stars 
-    //the white start will go from visible to not 
-
-
     const particleMat = new THREE.PointsMaterial({
       size: 0.4,
       sizeAttenuation: true
@@ -225,14 +187,6 @@ export default class Model {
     particleMat.map = particleTexture
     particleMat.transparent = true 
     particleMat.alphaMap = particleTexture
-
-    //SPECIAL PARTICLE 
-    this.shineParticleMaterial = new THREE.PointsMaterial({
-      size: 0.8,
-      sizeAttenuation: true
-      })
-
-    this.shineParticleMaterial.color = new THREE.Color('white')
 
 
     
@@ -261,11 +215,7 @@ export default class Model {
     this.particleGeo = new THREE.BufferGeometry() //we create our own geo for the particles 
     this.count = 8000//this will be the amount of particles 
 
-    //SPECIAL PARTICLES 
-    this.shineParticleGeo = new THREE.BufferGeometry()
-    this.shineCount = 1000 //these starts will shine
-    const shinePositions = new Float32Array(this.shineCount * 3)//same as below they need xyz
-
+    
 
     //BufferGeometry need to be passed a Float32 array containing the xyz values on each vertex
     const positions = new Float32Array(this.count*3) //each particle needs an xyz coord so we get 3 * the amount of particles 
@@ -286,7 +236,7 @@ export default class Model {
       //then me * by a value to get random values much further out ** KEEP THEM BEHIND 
       positions[i3] = (Math.random()-0.5) * 60 //x 
       positions[i3 + 1] = (Math.random()-0.5) * 60 //y 
-       positions[i3 + 2] = (Math.random()-0.5) * 60//z -60 on the z to keep the particles behind our planets 
+      positions[i3 + 2] = (Math.random()-0.5) * 60//z -60 on the z to keep the particles behind our planets 
 
       //we get a random array of rgb values from our array of space colors  
       randomlySelectedRGB = getRandomItem(spaceColorOptions)
@@ -296,19 +246,6 @@ export default class Model {
       colors[i3 + 1] = randomlySelectedRGB[1]
       colors[i3 + 2] = randomlySelectedRGB[2]
     }
-
-    //loop for our shinning stars 
-    for(let i = 0; i < this.shineCount * 3; i++){
-      let i3 = i * 3
-
-      shinePositions[i3 + 0] = (Math.random()-0.5) * 60//x 
-      shinePositions[i3 + 1] = (Math.random()-0.5) * 60//y 
-      shinePositions[i3 + 2] = (Math.random()-0.5) * 60//z
-    }
-
-    //set the positions of our shining stars on the bufferGeo
-    this.shineParticleGeo.setAttribute('position' , new THREE.BufferAttribute(shinePositions , 3))
-
 
     
     //we set those new positions on our geometry 
@@ -326,12 +263,9 @@ export default class Model {
     //we make our points mesh which are our particles
     this.particles = new THREE.Points(this.particleGeo, particleMat) 
 
-    //we create a second points mesh for our shining stars 
-    //this.shineParticles = new THREE.Points(this.shineParticleGeo , this.shineParticleMaterial)
-
+    //add to scene
     this.scene.add(this.particles)
-    //this.scene.add(this.shineParticles)
-
+    
 
 
     
@@ -376,7 +310,6 @@ export default class Model {
 
 
     
-    console.log(this.shineParticleMaterial , particleMat)
     
     //Start running the ticker
     this.startTick()
@@ -390,40 +323,9 @@ export default class Model {
   }
 
 
-  //function will return an array with the first value in each set of 3 and the original colors 
-  starShine = (array) => {
-    let vertexValues = []
-    
-    for(let i = 0; i < this.count; i++){
-      let i3 =  i * 3
-      vertexValues.push({
-        start : i3,
-        R : array.color.array[i3],
-        G : array.color.array[i3 + 1],
-        B : array.color.array[i3 + 2],
-        shining : false
-      })
-    }
-    return vertexValues
-  }
-
-  
-  
-
-
-
   //Our tick function - this block runs on everyframe
   tick = () => {
     
-
-    //this.shineParticleMaterial.size += 0.01 
-    //this.shineParticleMaterial.needsUpdate = true
-    //this.shineParticles.needsUpdate = true
-    //console.log(this.shineParticleMaterial.size)
-    //this.shineParticleGeo.needsUpdate = true
-    
-    
-
 
     //Delta time calculation for animation uniforming  
     let currentTime = Date.now()
@@ -441,11 +343,6 @@ export default class Model {
     //CAMERA MOVEMENT we update our camera
     this.camera.updateProjectionMatrix();
 
-      //Particle animation ? 
-     //TEMPORARILY SHELVED AS animating particles is incredibly taxing 
-     //shaders might be needed for this part 
-
-      
 
      //we render our renderer everyTick 
     this.renderer.render(this.scene, this.camera)
@@ -471,8 +368,6 @@ export default class Model {
       aspectRatio : window.innerWidth / window.innerHeight 
     }
 
-    
-    //this.renderer.setPixelRatio(Math.min(window.devicePixelRatio , 2))
   }
 
   //Update Canvas Element Function | This function runs if our canvas element was to change to prevent errors
@@ -572,7 +467,7 @@ export default class Model {
     // Set some default values for the
     let positions = this.dasPositionsJa.planet1
 
-    // Animate Planet Position
+    // Animate cam Position
     timeline.add({
       targets: [this.camera.position],
       x: positions.x,

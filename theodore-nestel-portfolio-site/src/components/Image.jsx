@@ -3,12 +3,8 @@ import bem2 from "../utility/bemify"
 
 const bem = bem2("image");
 
-//this one is pretty simple a regular old component that loads an image there isnt much else to it
-
+//Props for this are an img this returns an img element with the image classname 
 function Image(props){
-
-
-
     return(
         <img className={bem()}  src={props.image}/>
     )

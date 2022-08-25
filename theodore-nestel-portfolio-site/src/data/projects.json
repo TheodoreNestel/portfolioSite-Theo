@@ -1,68 +1,16 @@
 [
     {
-        "title": "Name of that particula site",
-        "data": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur pretium non a ut aliquam. Eget nulla sem purus platea et tincidunt elit. Gravida justo amet, nibh tristique viverra. A suspendisse pulvinar purus nibh convallis. Lectus ridiculus lectus nulla nunc, purus molestie ullamcorper purus. Urna turpis arcu mi elit nibh cursus nisl tristique. Ut ac enim et sapien vel.",
+        "title": "Great things are coming",
+        "data": "I am currently working on expanding my portfolio and have been working on some projects at my Day Fifty Five internship. Stay Tuned for more... for the time being please feel free to look at the code powering this website. It utilizes Gatsby , React and , Three js",
         "img": "https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.jpg",
         "links": [
             {
-                "link": "link1",
+                "link": "https://github.com/TheodoreNestel/portfolioSite-Theo",
                 "icon": "github",
-                "title": "sampleTitle1"
-            },
-            {"link": "link2", "icon": "reddit", "title": "sampleTitle2"
-            },
-            {"link": "email:coolEmail@email", "title": "coolEmail@email", "icon": "mail"
+                "title": "Github Repo"
             }
 
         ],
         "iconTitle":"foxBoyIcon"
-    },
-
-    {
-        "title" : "someTitle1",
-        "data" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur pretium non a ut aliquam. Eget nulla sem purus platea et tincidunt elit. Gravida justo amet, nibh tristique viverra. A suspendisse pulvinar purus nibh convallis. Lectus ridiculus lectus nulla nunc, purus molestie ullamcorper purus. Urna turpis arcu mi elit nibh cursus nisl tristique. Ut ac enim et sapien vel.",
-        "img" : "https://png.pngitem.com/pimgs/s/109-1092544_view-pogger-pogchamp-emote-png-transparent-png.png",
-        "links" : [
-            {
-                "link": "link1",
-                "icon": "github",
-                "title": "sampleTitle1"
-            },
-            {
-                "link": "link2",
-                "icon": "github",
-                "title": "sampleTitle2"
-            },
-            {
-                "link": "link3",
-                "icon": "github",
-                "title": "sampleTitle3"
-            }
-        ],
-        "iconTitle" : "pokemonIcon"
-    },
-
-    {
-        "title" : "someTitle2",
-        "data" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur pretium non a ut aliquam. Eget nulla sem purus platea et tincidunt elit. Gravida justo amet, nibh tristique viverra. A suspendisse pulvinar purus nibh convallis. Lectus ridiculus lectus nulla nunc, purus molestie ullamcorper purus. Urna turpis arcu mi elit nibh cursus nisl tristique. Ut ac enim et sapien vel.",
-        "img" : "https://i.imgflip.com/5jbdi4.jpg",
-        "links" : [
-            {
-                "link": "link1",
-                "icon": "github",
-                "title": "sampleTitle1"
-            },
-            {
-                "link": "link2",
-                "icon": "github",
-                "title": "sampleTitle2"
-            },
-            {
-                "link": "link3",
-                "icon": "github",
-                "title": "sampleTitle3"
-            }
-        ],
-        "iconTitle" : "pokemonIcon"
     }
 ]

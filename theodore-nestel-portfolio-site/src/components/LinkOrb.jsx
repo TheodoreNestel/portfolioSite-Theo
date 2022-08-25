@@ -2,7 +2,11 @@ import React from "react"
 import bemify2 from "../utility/bemify"
 
 
-//structure key should be identical to file name to reduce confusion
+//For the icons to be instanciated they must be declared in this object here 
+//the key and the name of the file must be indentical ex : {img : img.jpg} 
+//they must be decaled here before they can be visible on the component 
+
+//all our favicon
 const favIcons ={
     foxBoyIcon : "/foxBoyIcon.png",
     pokemonIcon : "/pokemonIcon.png"
@@ -11,16 +15,9 @@ const favIcons ={
 
 const bem = bemify2("linkorb")
 
-//This will most likely render a card with information but I am unsure if we are using this load it 
-//or if we are doing it some other way**
-
-//on click summons a card component 
-
-//clicking off the card closes it 
-
-//clicking the button opens it 
 
 
+//we return a button with a custom onClick callback and an img icon both must be passed down in props 
 function LinkOrb(props){
     return (
         <button className={bem()}

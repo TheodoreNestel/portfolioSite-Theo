@@ -36,58 +36,24 @@ main{
 
 
 
-//this holds the site together need help pls 
-// img{
-//     position: absolute;
-//     object-fit: fill;    
-//     height: 100%;
-//     width: 100%;
-// }
+
 
 .ringu {
     --ring-size: 125vh;
     position: absolute;
-    animation: rotate 200s linear infinite;
+    //animation: rotate 100s linear infinite;
     object-fit: contain;
     height: var(--ring-size);
     width: var(--ring-size);
     z-index: -1;
-}
-
-.ringu-s {
-    position: absolute;
-    animation: rotate 200s linear ;
-    object-fit: contain;
-    height: 188%;
-    width:188%;
-    z-index: -1;
-    top:60rem;
-    animation-iteration-count: infinite;
-
-//responsive sizes 
-//bigges first down the line or eat shit lol
-
-    //THEO NOTES styling card is where to be __main dictates size **arjun (why does it do that?)
-    
-
-    @include laptop{
-        top:60rem;
-    }
-
-    @include sideways-blet{
-        top: 40rem;
-    }
-
-    @include tablet{
-        top: 55rem;
-    }
-
-    @include phone{
-        top: 24rem;
-    }
-
+    opacity: 0.5;
     
 }
+
+
+    
+
+
 
 
 //Animation logic 
