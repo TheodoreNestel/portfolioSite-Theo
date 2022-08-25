@@ -1,20 +1,19 @@
-.ContactPage{
-    
-    margin: 10rem;
-    .card{
-        h3{
-            color: #ffffff;
-            font-family: Archia;
-        }
-        p{
-            color: #ffffff;
-            font-family: Archia;
-        }
 
-        border: solid 2px white;
+.page{
+    &__container--contact{
+        max-width: 65rem;
+        .card__main{
+            align-items: center;
+           
 
+            p{
+                text-align: center;
+            }
+        }
     }
+    
 }
+
 
 h2{
     

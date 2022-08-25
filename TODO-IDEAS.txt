@@ -107,10 +107,14 @@ TODO FINALE:
 TODO with arjun 
 
 -clean up entry / exit animatons 
-    -Ring spin animation is haunted 
+    -Ring spin animation is haunted --Try again with fresh mind ** FRIDAY 
 
--Clean up card & linkOrb css / edit jsx to make styling possible 
 
--Design / create / implement new nav ui 
 
--Explain / help with mobile / other screen css formating 
+-Clean up card & linkOrb css / edit jsx to make styling possible - Thursday Theo 
+
+-Design / create / implement new nav ui - Theo attemp Thursday
+
+
+
+-Explain / help with mobile / other screen css formating Friday ** 

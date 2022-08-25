@@ -20,7 +20,6 @@ function MainPage(){
         anime({
             targets: titleRef.current,
             opacity: [0, 1],
-            scale: [0,1],
             duration: 1500,
             easing: "easeOutCubic",
             delay: 1000
@@ -31,7 +30,7 @@ function MainPage(){
             targets: tldr.current,
             duration: 1500,
             easing: "easeOutCubic",
-            translateY : '100px',
+            translateY : [100 , 0],
             opacity: [0, 1],
             delay: 1000
         })

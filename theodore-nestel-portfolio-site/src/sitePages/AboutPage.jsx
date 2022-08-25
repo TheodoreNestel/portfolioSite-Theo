@@ -83,7 +83,7 @@ function AboutPage(){
     return (
 
         <div className={bem()}>
-            <div ref={container} className={bem("container")}>
+            <div ref={container} className={bem("container" , '--about')}>
             <Card {...aboutData}/>
             </div>
         </div>

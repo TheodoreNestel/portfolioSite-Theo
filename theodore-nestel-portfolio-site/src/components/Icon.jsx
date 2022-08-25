@@ -20,7 +20,7 @@ const logos = {
 function Icon({icon}){
     const Logo = logos[icon]//we grab the icon's string name in props so we can display it inside the component
     return(
-        <>{Logo && <Logo height="var(--icon-size)" width="var(--icon-size)"/>}</>
+        <>{Logo && <Logo height="var(--icon-size)" width="var(--icon-size)" color="currentColor"/>}</>
     )
 }
 

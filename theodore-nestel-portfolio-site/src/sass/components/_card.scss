@@ -9,6 +9,8 @@
     
     backdrop-filter: blur(5px);
 
+    background-color: rgba(255, 255, 255 , 0.05);
+
     border-radius: 12px;
 
     overflow: hidden;
@@ -50,11 +52,26 @@
         }
 
         & li{
+            --buttonColor : #c4c4c4;
             height:4.8rem;
             width:4.8rem;
             border-radius: 50%;
             @include flexCenter;
-            background-color: #C4C4C4;
+
+            border: 2px solid #c4c4c4;
+
+            transition: background 0.2s ease;
+           
+            a, a:link, a:visited{
+                color: #c4c4c4;
+                transition: color 0.2s ease;
+            }
+            &:hover{
+                background-color: #c4c4c4;
+                a, a:link, a:visited{
+                    color: black
+                }
+            }
 
             span{
                 @include flexCenter;
