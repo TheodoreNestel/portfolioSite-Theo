@@ -118,3 +118,7 @@ TODO with arjun
 
 
 -Explain / help with mobile / other screen css formating Friday ** 
+
+
+
+-Projects card img height not responding to 100% based sizing?

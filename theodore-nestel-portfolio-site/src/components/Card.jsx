@@ -16,12 +16,12 @@ const Card = (props) => {
     <div className={bem()}>
        {props.img && (
           <div className={bem("image")}>
-            <img src={props.img} />
+            <img className={bem("image",'--img')} src={props.img} />
           </div>
         )}
 
        <div className={bem("main")}>
-            <h3 className={bem("title")}>{props.title}</h3>
+            <h4 className={bem("title")}>{props.title}</h4>
             <div className={bem("content")}>
               {Array.isArray(props.data) ? 
                 props.data.map((d , index)=><p key={index}>{d}</p>) : <p>{props.data}</p>

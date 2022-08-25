@@ -10,6 +10,15 @@ transition: transform 0.3s ease-out;
 }
 }
 
+.linkorb__LinkOrbTitle {
+  text-align: center;
+  
+  font-size: 12px;
+  font-weight: 100;
+   
+}
+
+
 
 .linkorb{
   background-color: rgba(113, 113, 134, 0.56);
@@ -30,10 +39,6 @@ transition: transform 0.3s ease-out;
   height: 10rem;
   width: 10rem;
 
-  
- 
-
-
   position: relative;
   z-index: 1;
 
@@ -42,41 +47,20 @@ transition: transform 0.3s ease-out;
     width: 90%;
     object-fit: cover;
     z-index: -5; //this fucked with our linkorbs 
-
     
   }
-  
-  
-
-
   //kinda hacky used a img element inside the button to center it inside the orb 
 
   .linkorb__favIcon{
     z-index: 1;
-  }
-
-
-  
+  } 
   
   @include flexCenter;
 
 }
 
 
-.linkorb__LinkOrbTitle {
-  text-align: center;
-  
-  font-size: 12px;
-  font-weight: 100;
-  
-  
-  
- 
-}
-
-
-
-
+//cool backgroun logic 
 .linkorb{
 
   @for $i from 1 through 50 {
@@ -105,8 +89,6 @@ transition: transform 0.3s ease-out;
   }
 }
 
-
-
 @keyframes glowing {
   0% { background-position: 0 0; }
   50% { background-position: 400% 0; }
@@ -114,31 +96,18 @@ transition: transform 0.3s ease-out;
 }
 
 
-
-
-
 .page{
-  
-  &__projectCard--card{
-    width: 60vh;
-    height: 60vh;
-    margin: 0;
+  &__container--projects{
+    width: 80vw;
+    
+  }
+  &__container--projectCard{
+    padding: 2.6rem 5.6rem;
+    height : 100%;
+    width : 100%;
+    .card__image--img{
+      width: 100%;
+      height: 30vh;
+    }
   }
 }
-  
-
-
-
-
-
-
-//#ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000
-
-
-$black: #000;
-$pink: pink;
-$bright-yellow: #FAA916;
-$ghost-white: #FFFAFF;
-$beau-blue: #AAC7DA;
-$rich-black: #000411;
-$dim-grey: #6D676E;

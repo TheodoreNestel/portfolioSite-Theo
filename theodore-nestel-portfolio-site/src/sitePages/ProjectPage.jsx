@@ -119,29 +119,30 @@ function ProjectPage(props) {
     return (
         <div className={bem()}>
 
-                    <div style={{
-                        marginBottom: "2.4rem",
-                        display: "flex",
-                        gap: "1.6rem",
-                    }}>
-                                {projectData.map((project, key) => (
-                                    <LinkOrb
-                                        key={key}
-                                        onClick={() => !isAnimating.current&& setSelectedProject(project)}
-                                        title={project.title}
-                                        icon={project.iconTitle}
-                                    />
-                                ))}
-                    </div>
-
-                    {selectedProject&& (
-                        <div ref={cardContainerRef}>
-
-                            <Card {...selectedProject} />
-                            
+            <div className={bem('container','--projects')}>
+                        <div style={{
+                            marginBottom: "2.4rem",
+                            display: "flex",
+                            gap: "1.6rem",
+                        }}>
+                                    {projectData.map((project, key) => (
+                                        <LinkOrb
+                                            key={key}
+                                            onClick={() => !isAnimating.current&& setSelectedProject(project)}
+                                            title={project.title}
+                                            icon={project.iconTitle}
+                                        />
+                                    ))}
                         </div>
-            )}
-              
+
+                        {selectedProject&& (
+                            <div ref={cardContainerRef} className={bem('container','--projectCard')}>
+
+                                <Card {...selectedProject} />
+
+                            </div>)}
+            </div>
+
         </div>
     )
 }

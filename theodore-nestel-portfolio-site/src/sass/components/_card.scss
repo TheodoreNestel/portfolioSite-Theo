@@ -10,7 +10,6 @@
     backdrop-filter: blur(5px);
 
     background-color: rgba(255, 255, 255 , 0.05);
-    background-color: cyan;
 
     border-radius: 12px;
 
@@ -25,7 +24,7 @@
 
     &__image{
         img{
-            height:70%;
+            height:40%;
             width:100%;
             object-fit: cover;
         }
