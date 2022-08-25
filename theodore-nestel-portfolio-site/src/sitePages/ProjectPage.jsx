@@ -110,32 +110,36 @@ function ProjectPage(props) {
         // Trigger animation in
         animateCard("in")
 
+
     }, [selectedProject]) 
 
-
-
+ 
     //return a div with the linkOrbs with their designated favicon and the onClick call back funtion
     //if Selected Project is instanciated and contains data place it inside a Card component 
     return (
         <div className={bem()}>
-            <div style={{
-                marginBottom: "2.4rem",
-                display: "flex",
-                gap: "1.6rem",
-            }}>
-                {projectData.map((project, key) => (
-                    <LinkOrb
-                        key={key}
-                        onClick={() => !isAnimating.current&& setSelectedProject(project)}
-                        title={project.title}
-                        icon={project.iconTitle}
-                    />
-                ))}
-            </div>
-            {selectedProject&& (
-                <div ref={cardContainerRef}>
-                    <Card {...selectedProject} />
-                </div>
+
+                    <div style={{
+                        marginBottom: "2.4rem",
+                        display: "flex",
+                        gap: "1.6rem",
+                    }}>
+                                {projectData.map((project, key) => (
+                                    <LinkOrb
+                                        key={key}
+                                        onClick={() => !isAnimating.current&& setSelectedProject(project)}
+                                        title={project.title}
+                                        icon={project.iconTitle}
+                                    />
+                                ))}
+                    </div>
+
+                    {selectedProject&& (
+                        <div ref={cardContainerRef}>
+
+                            <Card {...selectedProject} />
+                            
+                        </div>
             )}
               
         </div>
