@@ -60,14 +60,13 @@ function AboutPage(){
                 .add({
                     targets: content,
                     opacity: 0,
-                    translateY: [anime.stagger(50), 0],
+                    translateY : '-100px',
                     delay: anime.stagger(150),
                     duration: 200
                 })
                 .add({
                     targets: card,
                     opacity: 0,
-                    scale: 0.7,
                     duration: 400
                 })
                 

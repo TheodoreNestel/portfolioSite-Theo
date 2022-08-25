@@ -2,11 +2,28 @@
 //this file is a little haunted pls show Arjun
 
 
-.projects {
-  padding: 6.4rem 4.8rem;
+// .page__projectPage {
+//   display: flex;
+//   height: 100vh;
+//   width: 100vw;
+//   flex-direction: row;
+//   background-color: red;
+// }
+
+// .page__projectPage--linkorbsBox{
+//   background-color: #FAA916;
+ 
+// }
+
+
+.linkorb__linkOrbBox{
+@include flexCenter;
+flex-direction: column;
+transition: transform 0.3s ease-out;
+&:hover{
+  transform: scale(1.09);
 }
-
-
+}
 
 
 .linkorb{
@@ -24,24 +41,27 @@
   outline: none;
   text-decoration: none;
 
-  border-radius: 50%;
-  height: 5rem;
-  width: 5rem;
+  border-radius: 20%;
+  height: 10rem;
+  width: 10rem;
 
+  
  
 
-  transition: transform 0.3s ease-out;
 
   position: relative;
   z-index: 1;
 
+  img{ //space image
+    height: 90%;
+    width: 90%;
+    object-fit: cover;
+    z-index: -5; //this fucked with our linkorbs 
 
-  
-
-
-  &:hover{
-    transform: scale(1.2);
+    
   }
+  
+  
 
 
   //kinda hacky used a img element inside the button to center it inside the orb 
@@ -51,11 +71,22 @@
   }
 
 
- 
   
   
   @include flexCenter;
 
+}
+
+
+.linkorb__LinkOrbTitle {
+  text-align: center;
+  
+  font-size: 12px;
+  font-weight: 100;
+  
+  
+  
+ 
 }
 
 
@@ -96,6 +127,24 @@
   50% { background-position: 400% 0; }
   100% { background-position: 0 0; }
 }
+
+
+
+
+
+.page{
+  
+  &__projectCard--card{
+    width: 60vh;
+    height: 60vh;
+    margin: 0;
+  }
+}
+  
+
+
+
+
 
 
 //#ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000

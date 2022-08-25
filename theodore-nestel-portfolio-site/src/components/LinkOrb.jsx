@@ -20,14 +20,16 @@ const bem = bemify2("linkorb")
 //we return a button with a custom onClick callback and an img icon both must be passed down in props 
 function LinkOrb(props){
     return (
+        <div className={bem('linkOrbBox')}>
         <button className={bem()}
         onClick={props.onClick}>    
         <img 
         src={favIcons[props.icon]}
         className={bem("favIcon")}
         />
-
         </button>
+        <p className={bem('LinkOrbTitle')}>{props.title}</p>
+        </div>
     )
 }
 
