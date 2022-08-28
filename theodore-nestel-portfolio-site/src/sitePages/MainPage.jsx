@@ -22,7 +22,7 @@ function MainPage(){
             opacity: [0, 1],
             duration: 1500,
             easing: "easeOutCubic",
-            delay: 1000
+            delay: 500
         })
         anime({
             //this still needs to be styled but id like more coaching on proper styling 
@@ -32,7 +32,7 @@ function MainPage(){
             easing: "easeOutCubic",
             translateY : [100 , 0],
             opacity: [0, 1],
-            delay: 1000
+            delay: 250
         })
 
     })
@@ -42,7 +42,7 @@ function MainPage(){
 
         //exit anim logic goes in here
         const timeline = anime.timeline({
-            duration: 500,
+            duration: 250,
             easing: "easeOutCubic",
         })
 
@@ -52,7 +52,7 @@ function MainPage(){
             scale : 0
         }).add({
             targets : tldr.current,
-            translateY : '-100px',
+            translateY : '100px',
             opacity : 0
         })
 

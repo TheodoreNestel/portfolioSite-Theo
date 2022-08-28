@@ -1,113 +1,36 @@
 
-
-
-.linkorb__linkOrbBox{
-@include flexCenter;
-flex-direction: column;
-transition: transform 0.3s ease-out;
-&:hover{
-  transform: scale(1.09);
-}
-}
-
-.linkorb__LinkOrbTitle {
-  text-align: center;
-  
-  font-size: 12px;
-  font-weight: 100;
-   
-}
-
-
-
-.linkorb{
-  background-color: rgba(113, 113, 134, 0.56);
-  
-  
-  //background-color: transparent;
-  backdrop-filter: blur(1.5px); //this removes the image for some reason 
-
-
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
-  text-decoration: none;
-
-  border-radius: 20%;
-  height: 10rem;
-  width: 10rem;
-
-  position: relative;
-  z-index: 1;
-
-  img{ //space image
-    height: 90%;
-    width: 90%;
-    object-fit: cover;
-    z-index: -5; //this fucked with our linkorbs 
-    
-  }
-  //kinda hacky used a img element inside the button to center it inside the orb 
-
-  .linkorb__favIcon{
-    z-index: 1;
-  } 
-  
-  @include flexCenter;
-
-}
-
-
-//cool backgroun logic 
-.linkorb{
-
-  @for $i from 1 through 50 {
-    &:nth-child(#{$i}):before {
-      animation-delay: 1000ms * $i;
-    }
-
-  }
-  &:before {
-    content: '';
-    background: linear-gradient(45deg, $ghost-white ,$beau-blue,$rich-black,$dim-grey,$beau-blue );
-    position: absolute;
-    top: -2px;
-    left:-2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing 40s linear infinite;
-    opacity: 1;
-    transition: opacity .3s ease-in-out;
-    border-radius: 10px;
-  
-  
-  }
-}
-
-@keyframes glowing {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
-}
-
-
 .page{
   &__container--projects{
     width: 80vw;
+    overflow: auto;
+    height : 100vh;
+    padding-top : 12rem;
+    max-width: 84rem;
+
+    .card{
+      background-color: rgba(255, 255, 255 , 0.05);
+    }
+    
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    
+    /* Hide scrollbar for IE, Edge and Firefox */
+     
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    
     
   }
-  &__container--projectCard{
-    padding: 2.6rem 5.6rem;
-    height : 100%;
-    width : 100%;
-    .card__image--img{
-      width: 100%;
-      height: 30vh;
-    }
+
+  
+
+ 
+  .card__image--img{
+    width: 100%;
+    max-height: 30rem; //this is being ignored
   }
+  
 }
+

@@ -17,6 +17,10 @@
 
     width: 100%;
 
+    height: 100%;
+
+    margin: 0px 0px 10px 0px;
+
     
 
 
@@ -24,7 +28,6 @@
 
     &__image{
         img{
-            height:40%;
             width:100%;
             object-fit: cover;
         }
@@ -87,53 +90,16 @@
 
     @include laptop{
 
-        width: 80rem;
 
-        &__main{
- 
-            width: 80rem;
-           
-            
-            padding: 2.2rem 5.6rem;
-            
-            @include flexCenter;
-            
         }
-
-        &__image{
-           height: 10%;
-        }
-
-        
-    }
 
     @include sideways-blet{
-
-        width: 70rem;
-       
-    &__main{
- 
-        width: 70rem;
-
-
-        @include flexCenter;
-        
-    }
-    
 
     }
 
     @include tablet{
     
-        //still think the way sizing works is strange here **arjun
-    width: 70rem;
-       
-    &__main{
- 
-        width: 70rem;
-
-
-        @include flexCenter;
+   
         
     }
     
@@ -142,65 +108,30 @@
 
 
     @include phone{
-        width: 30rem;
-        height:40rem;
-   
-    &__main h3{
-        font-size: 30px;
-    }
-    &__main{
+        .page__container--projects{
 
-        padding: 1.2rem 1.6rem;
-        width: 30rem;
-        height:40rem;
+            max-height: 70%;
+            padding-top: 1rem;
+        }
 
-        gap: 1rem;
-
-        @include flexCenter;
-        
-    }
-    &__main p{
-        font-size: 13px;
-        line-height: 20px;
-    }
-
-    &__image{
-        height: 0rem;
-    }
+        .card__image--img{
+            display: none;
+        }
 }
     
     
 
     @include mini-phone{
-            width: 30rem;
-            height:40rem;
-       
-        &__main h3{
-            font-size: 30px;
+        .page__container--projects{
+
+            max-height: 70%;
+            padding-top: 1rem;
         }
-        &__main{
-
-            padding: 1.2rem 1.6rem;
-            width: 30rem;
-            height:40rem;
-
-            gap: 1rem;
-
-            @include flexCenter;
-            
-        }
-        &__main p{
-            font-size: 13px;
-            line-height: 20px;
-        }
-
-        &__image{
-           // height: 0rem;
+        .card__image--img{
+            display: none;
         }
     }
 
     
-
-}
 
 

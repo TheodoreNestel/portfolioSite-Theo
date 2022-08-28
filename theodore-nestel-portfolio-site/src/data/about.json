@@ -1,4 +1,6 @@
 {
     "title" : "About me",
-    "data" : "LLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur pretium non a ut aliquam. Eget nulla sem purus platea et tincidunt elit. Gravida justo amet, nibh tristique viverra. A suspendisse pulvinar purus nibh convallis. Lectus ridiculus lectus nulla nunc, purus molestie ullamcorper purus. Urna turpis arcu mi elit nibh cursus nisl tristique. Ut ac enim et sapien vel"
+    "data" : "Hello! My name is Theodore. Im a recent Springboard graduate looking for the next step in my web dev journey.",
+    "img" : "theo&harlow.jpg",
+    "highlight" : "3D scenes in a browser!"
 }

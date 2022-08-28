@@ -1,44 +1,54 @@
 
 
 .magicButton{
+    --panelHeight : 4rem;
+    --panelSpacing : 3rem;
     position: fixed;
     z-index: 100;
-    bottom: 4.5rem;
-    display: flex;
+    bottom: 0;
+    width: 100%;
+    max-width: 30rem;
+    transition: ease 1s;
 
-    //background-color: rgba(0,0,0,0); //rgba(113, 113, 134, 0.56);
+    transform: translateY(calc(
+        var(--panelHeight) +
+        var(--panelSpacing) + 1rem
+        ));
+
+        &:hover{
+            transform: translateY(0);
+            scale: 1.2;
+        }
+    padding: var(--panelSpacing);
+
+
+
+
+
+
+
+
     
-    //backdrop-filter: blur(40px);
-
-    border-radius: 4px;
-
-    //this had to be removed for anim purpose
-    //overflow: hidden;
-
-    padding: 3rem;
-
-    justify-content: center;
-    align-items: center;
-
     &__explore{
-        position: absolute;
-        transition: all 0.25s ease;
-       
-        h4{
-            color: white;
-            font-family:Exodus ;
-            border-radius: 30%;
-            //box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
-            animation: pulse 2s infinite;
+        margin-bottom: var(--panelSpacing);
+        transition: ease 1s;
+        
+        @include flexCenter;
+        .preButtonTitle{
+            background-color: rgb(255, 255, 255);
+            width: 25rem;
+            height: 0.7rem;
+            border-radius: 20px;
+            animation: scrollToDiscover 5s ease-in-out infinite;
         }
     }
-   
-    &:hover &__explore{
-        transform: translateY(-4rem);
+    &:hover .magicButton__explore{
         opacity: 0;
-
+        transform: translateY(2rem);
+       
     }
-
+   
+    
     &__buttons--animated{
         opacity: 0;
         transition: all 0.25s ease;
@@ -47,10 +57,42 @@
     &:hover &__buttons--animated{
         opacity: 1;
     }
+
+    &__buttons{
+        height: 100%;
+        width: 100%;
+        display: flex;
+
+       @include flexCenter;
+        justify-content: space-around;
+       
+    }
    
 
-    
-       
+    &__panel{
+        height: var(--panelHeight);
+        background-color: rgba(255, 255, 255, 0.305);
+        position: relative;
+        border-radius: 5px;
+        
+        // border-right: solid 3px rgb(255, 255, 255);
+        // border-left: solid 3px rgb(255, 255, 255);
+        // border-top: solid 6px rgb(255, 255, 255);
+        // border-bottom: solid 6px rgb(255, 255, 255);
+        img{
+            display: block;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+            position: absolute;
+            top : 0;
+            left : 0;
+            opacity: 0.3;
+            pointer-events: none;
+            //z-index: -1;
+        }
+    }
 
     button{
        
@@ -69,24 +111,30 @@
     
 
 
-    @keyframes pulse {
+   
+
+    @keyframes scrollToDiscover {
         0% {
-            transform: scale(0.95);
-            box-shadow: 0 0 0 0 rgba(225, 225, 225, 0.9);
+            transform: translateY(0rem);
+            opacity: 0.3;
         }
-    
-        70% {
-            transform: scale(1);
-            box-shadow: 10 10 0 10px rgba(225, 255, 225, 0);
+
+        50%{
+            transform: translateY(1.5rem);
+            opacity: 1.0;
         }
-    
-        100% {
-            transform: scale(0.95);
-            box-shadow: 0 0 0 0 rgba(255, 225, 225, 0);
+        
+        100%{
+            transform: translateY(0rem);
+            opacity: 0.3;
         }
     }
 
 
+
+    //TEST 
+
+    
 
 
 }
