@@ -39,13 +39,13 @@ export default function Ringu ({currentPage}){
     const ringuAnim = useRef()
     useLayoutEffect(()=>{ //run this on mount for ringu spin 
     
-    ringuAnim.current =  anime({
-        targets : [ring.current],
-        rotate : [0 , 360],
-        duration : 200000,
-        loop : true,
-        easing : "linear"
-      })
+    // ringuAnim.current =  anime({
+    //     targets : [ring.current],
+    //     rotate : [0 , 360],
+    //     duration : 200000,
+    //     loop : true,
+    //     easing : "linear"
+    //   })
 
     anime({
         targets : [ring.current],
@@ -54,7 +54,7 @@ export default function Ringu ({currentPage}){
         easing : 'easeInOutQuad'
     })
 
-      return ()=> ringuAnim.current.pause()
+      //return ()=> ringuAnim.current.pause()
 
     },[currentPage])
 
@@ -66,12 +66,13 @@ export default function Ringu ({currentPage}){
             easing : 'easeInOutQuad'
         })
         await scaleRingu.finished
-        ringuAnim.current.pause()
+        //ringuAnim.current.pause()
     },[currentPage])
 
     return (
-
-        <img ref={ring} className="ringu" src="/ring2Formated.png"/>
+        <div ref={ring} className="ringu">
+            <img src="/ring2Formated.png"/>
+        </div>
     )
 }
 

@@ -37,6 +37,12 @@
         height: 30%;
         
         bottom : 20%;
+
+        @include phone{
+            max-width: unset;
+            height: unset;
+            bottom : unset;
+        }
         
     }
     
@@ -59,7 +65,7 @@
 
         }
         .page__container--about{
-           flex-direction: row;
+           
         }
     }
 }

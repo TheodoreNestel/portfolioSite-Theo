@@ -42,12 +42,18 @@ main{
 .ringu {
     --ring-size: 125vh;
     position: absolute;
-    //animation: rotate 100s linear infinite;
     object-fit: contain;
     height: var(--ring-size);
     width: var(--ring-size);
     z-index: -1;
     opacity: 0.5;
+
+    img{
+        display: block;
+        height: 100%;
+        width: 100%;
+        animation: rotate 100s linear infinite;
+    }
     
 }
 

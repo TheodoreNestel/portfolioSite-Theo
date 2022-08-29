@@ -1,11 +1,11 @@
 
 .page{
   &__container--projects{
-    width: 80vw;
     overflow: auto;
     height : 100vh;
-    padding-top : 12rem;
+    padding : 4.8rem 1.2rem 0;
     max-width: 84rem;
+    
 
     .card{
       background-color: rgba(255, 255, 255 , 0.05);

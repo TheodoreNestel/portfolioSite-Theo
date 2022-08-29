@@ -41,6 +41,10 @@
         &--min{
             padding-top: 3rem;
         }
+
+        @include phone {
+            padding: 3.6rem;
+        }
        
     }
 
@@ -110,8 +114,8 @@
     @include phone{
         .page__container--projects{
 
-            max-height: 70%;
-            padding-top: 1rem;
+
+            padding: 4.8rem 0;
         }
 
         .card__image--img{
@@ -121,17 +125,7 @@
     
     
 
-    @include mini-phone{
-        .page__container--projects{
-
-            max-height: 70%;
-            padding-top: 1rem;
-        }
-        .card__image--img{
-            display: none;
-        }
-    }
-
+   
     
 
 

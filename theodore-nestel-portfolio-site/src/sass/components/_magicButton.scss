@@ -9,7 +9,6 @@
     width: 100%;
     max-width: 30rem;
     transition: ease 1s;
-
     transform: translateY(calc(
         var(--panelHeight) +
         var(--panelSpacing) + 1rem
@@ -74,24 +73,13 @@
         background-color: rgba(255, 255, 255, 0.305);
         position: relative;
         border-radius: 5px;
+        backdrop-filter: blur(10px);
         
         // border-right: solid 3px rgb(255, 255, 255);
         // border-left: solid 3px rgb(255, 255, 255);
         // border-top: solid 6px rgb(255, 255, 255);
         // border-bottom: solid 6px rgb(255, 255, 255);
-        img{
-            display: block;
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            border-radius: 5px;
-            position: absolute;
-            top : 0;
-            left : 0;
-            opacity: 0.3;
-            pointer-events: none;
-            //z-index: -1;
-        }
+    
     }
 
     button{
