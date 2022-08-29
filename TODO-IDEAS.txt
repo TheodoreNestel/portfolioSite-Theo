@@ -111,10 +111,9 @@ TODO with arjun
 
 
 
--Clean up card & linkOrb css / edit jsx to make styling possible - Thursday Theo 
 
--Design / create / implement new nav ui - Theo attemp Thursday
 
+-Design / create / implement new nav ui - Theo attemp Thursday 
 
 
 -Explain / help with mobile / other screen css formating Friday ** 
@@ -122,3 +121,15 @@ TODO with arjun
 
 
 -Projects card img height not responding to 100% based sizing?
+    -the img in general is not responsive to certain attributes pls explain uwu
+    
+
+
+
+
+ARJUN HELP FRIDAY 
+    -fix haunted rings 
+    
+    -Ui design / implement pls <3 attempt 
+
+    -show me how to do responsize mixins for smaller devices - Sundays 

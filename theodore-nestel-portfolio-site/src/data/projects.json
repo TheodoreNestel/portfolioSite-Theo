@@ -2,21 +2,7 @@
     {
         "title": "Portfolio v1.0",
         "data": "I am currently working on expanding my portfolio and have been working on some projects at my Day Fifty Five internship. Stay Tuned for more... for the time being please feel free to look at the code powering this website. It utilizes Gatsby , React and , Three js.",
-        "img": "https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.jpg",
-        "links": [
-            {
-                "link": "https://github.com/TheodoreNestel/portfolioSite-Theo",
-                "icon": "github",
-                "title": "Github Repo"
-            }
-
-        ],
-        "iconTitle":"foxBoyIcon"
-    },
-    {
-        "title": "Portfolio v1.0",
-        "data": "I am currently working on expanding my portfolio and have been working on some projects at my Day Fifty Five internship. Stay Tuned for more... for the time being please feel free to look at the code powering this website. It utilizes Gatsby , React and , Three js.",
-        "img": "https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.jpg",
+        "img": "space.jpeg",
         "links": [
             {
                 "link": "https://github.com/TheodoreNestel/portfolioSite-Theo",

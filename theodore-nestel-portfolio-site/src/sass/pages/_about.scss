@@ -1,23 +1,74 @@
 
-.AboutPage{
-    margin: 10rem;
+.page{
     
+   
+   
+&__container--about{
+    background-color: rgba(255, 255, 255 , 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+
+    width: 100%;
+    padding: 5.6rem 5.6rem;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 3rem;
+
+
+    &--min{
+        padding-top: 3rem;
+    }
+
+    }
+    &__about--img{
+         
+        width : 33%;
+        object-fit: fill;
+        border-radius: 12px;
+        align-self: flex-end;
+      
+       }
+    &__about--highlight{
+       
+        max-width: 50%;
+        color: rgb(184, 124, 12);
+        height: 30%;
+        
+        bottom : 20%;
+
+        @include phone{
+            max-width: unset;
+            height: unset;
+            bottom : unset;
+        }
+        
+    }
     
-        h3{
-            color: #ffffff;
-            font-family: Archia;
-        }
-        p{
-            color: #ffffff;
-            font-family: Archia;
-        }
+    &__about--highlightandimg{
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
     }
 
 
+    @include tablet{
+        .page__about--img{
+            display: none;
+        }
+        .page__about--highlightandimg{
+            display: flex;
+            justify-content: space-between;
 
-h2{
-    
-   
-    width: 747px;
-    color: #FFFFFF;
+        }
+        .page__container--about{
+           
+        }
+    }
 }
+
+
+

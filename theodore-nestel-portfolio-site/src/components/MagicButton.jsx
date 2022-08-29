@@ -27,7 +27,8 @@ const cleanPageNames = {
 //returns our nav and the animations attached to it
 function MagicButton(props) {
 
-    
+    const isAnimating = useRef(false)
+
     let currentOptions = pageDirection[props.currentPage] //this sets up our current nav options
     //by setting currentPage to an array of all possible pages you can navigate to from it  
 
@@ -38,33 +39,38 @@ function MagicButton(props) {
 
 
     return (
-        <div id="test" className={bem()} onMouseOver={() => {}}>
+        <div className={bem()}>
 
 
-            {currentOptions.length > 1 && (
-                <div className={bem("explore")}>
-                    <h4 className="preButtonTitle">Explore</h4>
+
+            <div className={bem("explore")}>
+                <div className="preButtonTitle"></div>
+            </div>
+
+
+            <div className={bem('panel')}>
+                <div className={bem("buttons", [currentOptions.length > 1, "--animated"])}>
+                    {currentOptions.map((pageNav) => (
+                        <button
+                            key={pageNav}
+                            className={bem(pageNav)}
+                            onClick={async () => {
+                                if (isAnimating.current) return
+                                isAnimating.current = true
+                                animation.ringu()
+                                await animation?.page()
+                                await animation?.space(pageNav)
+                                props.changePage(pageNav)
+                                isAnimating.current = false
+
+                            }}>
+                            {cleanPageNames[pageNav]}
+                        </button>
+                    )
+                    )}
+
                 </div>
-            )}
-
-
-            <div className={bem("buttons", [currentOptions.length > 1, "--animated"])}>
-                {currentOptions.map((pageNav) => (
-                    <button
-                        key={pageNav}
-                        className={bem(pageNav)}
-                        onClick={async () => {
-                            animation.ringu()
-                            await animation?.page()
-                            await animation?.space(pageNav)
-                            props.changePage(pageNav)
-                            
-                        }}>
-                        {cleanPageNames[pageNav]}
-                    </button>
-                )
-                )}
-
+               { /* <img src="https://territorystudio.com/wp-content/uploads/2020/03/Screen_C_Loop_v001.gif" /> */}
             </div>
 
 

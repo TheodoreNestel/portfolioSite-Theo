@@ -40,9 +40,41 @@ h4{
     -webkit-background-clip: text;
     background-position: center;
     mix-blend-mode: luminosity;
+
+   
 }
 
+
+@include laptop{
+
+  
+
+   
 }
+
+@include sideways-blet{
+
+  
+}
+
+
+}
+
+@include tablet{ //for this and any smaller screen size we just place the h4 below the title in the center 
+
+   .page__container--mainTitle{
+     
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
+
+
+}
+
+
+
 
 //the second one is the one I like most for now 
 
