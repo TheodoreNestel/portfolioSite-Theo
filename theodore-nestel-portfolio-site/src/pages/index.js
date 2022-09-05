@@ -1,6 +1,5 @@
 import React , {useState , useEffect ,useRef} from "react"
-import { useTransition } from "../THREEjs";
-import anime from "animejs"
+
 
 
 // Import Main SCSS Entry Point Stylesheet

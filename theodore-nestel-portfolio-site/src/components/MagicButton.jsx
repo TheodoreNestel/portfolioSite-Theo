@@ -44,6 +44,7 @@ function MagicButton(props) {
 
 
             <div className={bem("explore")}>
+                <h5 className='prebuttonTitleText'>Hover me</h5>
                 <div className="preButtonTitle"></div>
             </div>
 

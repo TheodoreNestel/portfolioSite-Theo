@@ -25,8 +25,6 @@ function MainPage(){
             delay: 500
         })
         anime({
-            //this still needs to be styled but id like more coaching on proper styling 
-            //this will be hidden and appear by moving down from behind the main title
             targets: tldr.current,
             duration: 1500,
             easing: "easeOutCubic",

@@ -31,8 +31,18 @@
     &__explore{
         margin-bottom: var(--panelSpacing);
         transition: ease 1s;
+
+       
         
-        @include flexCenter;
+        //@include flexCenter;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .prebuttonTitleText{
+            animation: scrollToDiscoverText 5s ease-in-out infinite;
+            margin: 5px;
+        }
         .preButtonTitle{
             background-color: rgb(255, 255, 255);
             width: 25rem;
@@ -119,6 +129,22 @@
     }
 
 
+    @keyframes scrollToDiscoverText {
+        0% {
+            transform: translateY(0rem);
+            opacity: 0;
+        }
+
+        50%{
+            transform: translateY(1.5rem);
+            opacity: 1.0;
+        }
+        
+        100%{
+            transform: translateY(0rem);
+            opacity: 0;
+        }
+    }
 
     //TEST 
 

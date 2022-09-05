@@ -133,3 +133,25 @@ ARJUN HELP FRIDAY
     -Ui design / implement pls <3 attempt 
 
     -show me how to do responsize mixins for smaller devices - Sundays 
+
+
+
+
+
+
+Current bugs
+
+    -Page component rendering before the entry animation causing a weird launch effect
+        -this bug seems to exist only on the internet for some reason 
+
+    -About component's image doesnt load even though a source is provided from the public directory 
+        -Mini rework to its appearence as its kind of plane and boring currently
+
+
+
+
+
+
+
+fIXES
+    -changed nav hover bar to be more noticable since several user's reported being confused 
