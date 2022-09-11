@@ -6,13 +6,13 @@ module.exports = {
   plugins: ["gatsby-plugin-sass", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-plugin-manifest',
     options: {
-      "icon": "https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.jpg"
+      "icon": "public/ring1.png"
     }
   }, "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
     resolve: 'gatsby-source-filesystem',
     options: {
       "name": "images",
-      "path": "https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.jpg"
+      "path": "./src/images/"
     },
     __key: "images"
   }]
