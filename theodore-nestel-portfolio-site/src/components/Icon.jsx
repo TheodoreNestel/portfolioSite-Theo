@@ -1,6 +1,6 @@
 import React from "react"
 import bemify2 from "../utility/bemify";
-import {LogoGithub , LogoReddit ,MailOutline, LogoLinkedin, DocumentTextOutline } from "react-ionicons"
+import {LogoGithub , LogoReddit ,MailOutline, LogoLinkedin, DocumentTextOutline, LinkOutline } from "react-ionicons"
 
 
 
@@ -8,14 +8,17 @@ import {LogoGithub , LogoReddit ,MailOutline, LogoLinkedin, DocumentTextOutline 
 //then added to the Logos object so our component can grab them and display them.
 
 const bem = bemify2("icon")
+
 const logos = {
     github : LogoGithub,
     reddit : LogoReddit,
     mail : MailOutline,
     linkedIn : LogoLinkedin,
-    resume : DocumentTextOutline
+    resume : DocumentTextOutline,
+    weblink : LinkOutline
 
 }
+//console.log(TbExternalLink)
 
 function Icon({icon}){
     const Logo = logos[icon]//we grab the icon's string name in props so we can display it inside the component

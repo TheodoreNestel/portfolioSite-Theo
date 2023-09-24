@@ -31,7 +31,7 @@ const Card = (props) => {
               <ul className={bem("links")}>
                   {props.links.map((link , index)=> (
                     <li key={index}>
-                      <a href={link.link} target="_blank"><Icon icon={link.icon}/></a>
+                      <a href={link.link} target="_blank"> <Icon icon={link.icon}/> </a>
                     </li>
                   ) )}
               </ul>

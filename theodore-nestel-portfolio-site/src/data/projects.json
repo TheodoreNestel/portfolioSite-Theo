@@ -10,7 +10,89 @@
                 "title": "Github Repo"
             }
 
-        ],
-        "iconTitle":"foxBoyIcon"
+        ]
+    },
+    {
+        "title": "VVouivre Vtuber Website",
+        "data": "A small project done as a favor to a friend of mine. This project was programmed and designed by me and, uses scss , Barba and AnimeJs. It was designed to be easily scalable and easily readable.",
+        "img": "vvsiteSnapshot.png",
+        "links": [
+            {
+                "link": "https://github.com/TheodoreNestel/VV-site-v2",
+                "icon": "github",
+                "title": "Github Repo"
+            },
+
+            {
+                "link": "http://vouivr.es/",
+                "icon": "weblink",
+                "title": "Link to site"
+            }
+
+        ]
+        
+    },
+    {
+        "title": "Lickor-cat",
+        "data": "A tiny react app that lets user's calculate how many calories of liquor they've consumed. I built this for fun over a weekend. It does lack some polish but its still a fun app.",
+        "img": "lickor-cat.png",
+        "links": [
+            {
+                "link": "https://github.com/TheodoreNestel/alchohol-cat",
+                "icon": "github",
+                "title": "Github Repo"
+            },
+
+            {
+                "link": "https://lickor-cat.fun/",
+                "icon": "weblink",
+                "title": "Link to site"
+            }
+
+        ]
+        
+    }
+    ,
+    {
+        "title": "Stylist Portfolio Site",
+        "data": "A portfolio site for my friend who is a hairstylist. This app is a traditional Js/HTML site but uses a react component for the image gallery.",
+        "img": "sarah-portfolio.png",
+        "links": [
+            {
+                "link": "https://github.com/TheodoreNestel/Sarah-portfolio",
+                "icon": "github",
+                "title": "Github Repo"
+            },
+
+            {
+                "link": "https://sarah-shear-styles.com/",
+                "icon": "weblink",
+                "title": "Link to site"
+            }
+
+        ]
+        
+    },
+    {
+        "title": "FullStack React Application Using google maps. 'Neon-street'",
+        "data": "A fullstack application that lets users track 'races' using google maps. This application has its own backend and database both are used to keep track of a user's information as well as the 'races' they've completed. The backend was built using node and express",
+        "img": "neon-street.png",
+        "links": [
+            {
+                "link": "https://github.com/TheodoreNestel/race-app",
+                "icon": "github",
+                "title": "Github Repo"
+            },
+
+            {
+                "link": "https://neon-street.racing/",
+                "icon": "weblink",
+                "title": "Link to site"
+            }
+
+        ]
+        
     }
 ]
+    
+    
